@@ -2,9 +2,9 @@
 # Estudio JS - Full-Stack 3D Portfolio
 
 ## Stack
-- **Frontend:** Next.js, React, Three.js (JavaScript Mastery Pro)
-- **Backend:** Laravel (Laracasts Lifetime)
-- **Legacy:** Spring Boot (tu experiencia)
+- **Frontend:** Next.js, React, Three.js 
+- **Backend:** Laravel 
+- **Legacy:** Spring Boot 
 - **Deploy:** Vercel, GitHub Pages
 
 ## Proyectos
