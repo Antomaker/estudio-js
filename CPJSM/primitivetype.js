@@ -31,4 +31,7 @@ let reservation= null;
 let myNote;
 console.log(myNote);
 
-//6 Sym
+//6 Symbols
+
+const id = Symbol('id');
+console.log(id);
