@@ -1,0 +1,2282 @@
+Introduction to JavaScript Variables and Data Types
+Welcome to the first module of your JavaScript journey, where you'll learn about variables and data types essential for programming. This module introduces the fundamental concepts of data handling in JavaScript, focusing on how to create variables and understand various data types.
+
+Everything in programming starts with data, which is stored and manipulated using variables.
+Variables can be thought of as labeled boxes for holding different types of information, such as numbers, texts, boolean values, and collections of data.
+You will learn to create variables using let, const, and var.
+The module covers both primitive and complex data types in JavaScript.
+Understanding how JavaScript handles null and undefined values is also part of this module.
+By the end, you'll be equipped to confidently store and manage data as a JavaScript pro.
+
+As you progress through the course, you’ll see comments used frequently in the code examples. But what are comments, and why are they important?
+
+What Are Comments?
+A comment is a line or block of text in your code that JavaScript ignores while running. Comments are there to help explain your code—both for yourself and for others.
+
+They’re especially useful when:
+
+You revisit your code after weeks or months and need a reminder of what it does.
+You’re working with a team, and others need to understand your logic.
+You want to mark areas for improvement or unfinished tasks.
+Good comments explain why something is done, not just what.
+
+Types of Comments
+JavaScript supports two kinds of comments:
+
+1. Single-Line Comments
+Single-line comments start with //. Anything after // on the same line is ignored by JavaScript.
+
+Example:
+
+// This is a single-line comment
+const age = 25; // Age of the user
+When to use:
+
+For short, quick notes or explanations.
+To disable a single line of code during debugging:
+// console.log("This line is ignored!");
+2. Multi-Line Comments
+Multi-line comments start with /* and end with */. Everything in between is ignored by JavaScript.
+
+Example:
+
+/*
+This is a multi-line comment.
+You can use it to write detailed notes
+or explain complex sections of code.
+*/
+When to use:
+
+For detailed descriptions of how a function or script works.
+To document larger sections of code:
+/*
+ This function calculates the sum of two numbers.
+ It accepts two arguments: a and b.
+ Returns the result of a + b.
+*/
+function sum(a, b) {
+  return a + b;
+}
+Tips for Writing Great Comments
+Be Concise but Clear: Avoid writing long paragraphs. Instead, focus on key points.
+
+// Bad comment
+// This function takes two numbers as input, adds them together, and then returns the result.
+
+// Good comment
+// Adds two numbers
+Explain the Why, Not Just the What:
+
+// Bad comment
+// Increment the value
+value++;
+
+// Good comment
+// Increment value to reflect the next step in the process
+value++;
+Use Comments as Reminders: Mark unfinished tasks with a TODO comment:
+
+// TODO: Add validation for negative numbers
+Quick Fun Example
+Let’s add comments to a simple program:
+
+// This program calculates the area of a rectangle
+
+// Length of the rectangle
+const length = 10;
+
+// Width of the rectangle
+const width = 5;
+
+/*
+Calculate the area by multiplying
+length and width
+*/
+const area = length * width;
+
+console.log("Area of the rectangle:", area); // Display the area
+In this example:
+
+Single-line comments are used to explain variables.
+A multi-line comment explains the calculation.
+Interactive Activity
+Open VS Code and create a new file called comments.js.
+Write a small program that:
+Declares a variable for your name.
+Declares another variable for your favorite hobby.
+Logs a message to the console using these variables.
+Add meaningful comments to your program:
+Use single-line comments to explain each variable.
+Use a multi-line comment to describe the purpose of your program.
+Here’s a template to get you started:
+
+// Declare a variable for the user's name
+const name = "James Bond";
+
+// Declare a variable for the user's favorite hobby
+const hobby = "driving Aston Martins";
+
+/*
+ This program combines the name and hobby
+ to create a fun introduction message.
+*/
+console.log(`${name} loves ${hobby}.`);
+Run your program and ensure it works. Then, practice disabling some lines with // to see how comments can help debug your code.
+
+Learning Objective: Understand what variables are, their purpose, and how to create them.
+
+Welcome to the first section of the course! Over the next few lessons, we’ll explore variables and data types, two foundational concepts in programming.
+
+Variables are like containers that hold reusable data.
+
+Their sole purpose is to label and store data in memory.
+
+This data can then be used through the entirety of your program.
+
+Think of variables in JavaScript as containers which hold reusable data. In other words, they are units of storage, like some sort of box into which we can put data.
+
+There are three simple steps to creating a variable and using it’s data:
+
+Create a variable and give it a name.
+Store your value in it.
+Retrieve and use the stored value from the variable.
+Now in the next lesson, I’ll teach you how to create your first variable!
+
+the name of the identifier must be unique
+the name of the identifier should not be any reserved JavaScript keyword (for example, we cannot declare a variable like this: var let = 0;)
+the first character must be a letter, an underscore (_), or a dollar sign ($). Subsequent characters may be any letter or digit or an underscore or dollar sign.
+
+Learning Objective: Learn the three ways to declare variables and understand the rules for naming them.
+
+In earlier versions of JavaScript, variables were solely declared using the var keyword followed by the name of the variable and a semicolon. This is how we would do it.
+
+var variableName = "Old school!";
+After ES6 (a newer version of JavaScript) , we now have two new ways to declare a variable: let and const.
+
+We can take a look at both of them one by one.
+
+The variable type let shares lots of similarities with var but unlike var it has some scope constraints. The scope is out of "scope" of this introductory video but we will explain it in great detail in a later video! The only thing that you need to know right now is that let is the preferred way of creating variables in modern JavaScript.
+let mutable = "This can change!";
+Const is another variable type assigned to data who se value cannot and will not change throught the script. jsx const immutable = 'This cannot change!';
+As you can see, I used different names for naming our variables. Everything from variableName, to mutable, and immutable. It can be anything.
+
+But what do you think, do we really have the complete freedom of choosing our variable names? In most cases, yes, you can choose whatever name makes most sense. But there are some quick rules.
+
+Rules for Naming Variables:
+
+Names must be unique.
+Avoid reserved keywords (e.g., var let = 5; is invalid).
+the first character must be a letter, an underscore (_), or a dollar sign (&). Subsequent characters may also include numbers.
+Try creating some variables yourself!
+
+To recap, there are three different ways to make (or declare) a variable: var, let and const.
+
+From now on, whenever we're creating a new variable, we're going to use either the const or the let keyword.
+
+const when variable is going to be constant and let when we plan on changing it!
+
+Let's move on to data types to see what kind of data can we store inside of variables!
+
+Learning Objective: Understand JavaScript’s data types and their significance.
+
+In the previous lecture, we talked about how we can store values in variables. These values need to be in the form of one of JavaScript’s predefined data types. If this sounds abstract—don’t worry! We’ll go through it step by step, and by the end of this lesson, it’ll all make sense.
+
+Think of data types as different kinds of containers that hold specific types of information. JavaScript has two main categories of data types:
+
+1. Primitive Data Types
+These are the basic building blocks of data in JavaScript. Let’s break them down with fun examples:
+
+a. Numbers
+Numbers represent both whole numbers and decimals in JavaScript.
+
+Example: Let’s say you’re counting the number of stars in the sky (simplified, of course):
+
+const stars = 1000000; // A million stars!
+const pi = 3.14; // A decimal value for mathematical calculations.
+b. Strings
+Strings are sequences of characters enclosed in quotes. Think of them as text.
+
+Example: Imagine you’re sending a message:
+
+const message = "Hello, world!";
+c. Boolean
+Booleans represent yes/no, true/false values. They’re super useful for decision-making in code.
+
+Example: Are the cookies baked?
+
+const isBaked = true; // Yes, they’re ready!
+const isBurnt = false; // Thankfully, not burnt.
+d. Null
+
+Null represents the absence of a value. It’s like an empty container.
+
+Example: You’ve reserved a table at a restaurant, but the details aren’t finalized yet:
+
+let reservation = null; // No table assigned yet.
+e. Undefined
+Undefined means a variable has been declared but not given a value yet.
+
+Example: Imagine writing a note, but forgetting to fill in the details:
+
+let myNote;
+console.log(myNote); // undefined
+f. Symbol
+Symbols are unique and immutable identifiers, often used in advanced JavaScript.
+
+Example: Let’s create a unique identifier:
+
+const id = Symbol('uniqueID');
+console.log(id); // Symbol(uniqueID)
+2. Complex Data Type: Objects
+Objects are the most important data type in JavaScript and the foundation of modern web development.
+
+Think of an object as a collection of related data. For example:
+
+const person = {
+  name: "James Bond",
+  age: 007,
+  car: {
+    make: "Aston Martin",
+    model: "DBS",
+    year: 1969,
+  },
+};
+You can access specific properties using dot notation:
+
+console.log(person.car.make); // Aston Martin
+Arrays: Special Objects
+Arrays are a type of object that store ordered lists of items.
+
+Example: Imagine listing your favorite movies:
+
+const movies = ["Casino Royale", "Skyfall", "Spectre"];
+console.log(movies[1]); // Skyfall
+Arrays are perfect for keeping track of collections like shopping lists, to-do tasks, or top-secret missions.
+
+How to Identify Data Types
+You can easily check the data type of a value using the typeof operator. This is incredibly useful for debugging and understanding your variables.
+
+Example:
+
+console.log(typeof 42); // "number"
+console.log(typeof "Hello!"); // "string"
+console.log(typeof true); // "boolean"
+console.log(typeof null); // "object" (a JavaScript quirk!)
+console.log(typeof undefined); // "undefined"
+console.log(typeof person); // "object"
+console.log(typeof movies); // "object"
+Interactive Activity
+Open VS Code and create a new file called dataTypes.js.
+
+Experiment by declaring variables for each data type:
+A number for your age.
+A string for your favorite movie or book quote.
+A Boolean for whether you’ve eaten lunch today.
+A Null value for a task you haven’t started yet.
+An array for your top three hobbies.
+
+Use console.log() and typeof to check the data type of each variable. Example:
+
+const age = 25;
+console.log(typeof age); // "number"
+
+Learning Objective: Understand how to work with strings and their unique properties.
+
+What Are Strings?
+A string is a sequence of characters used to represent text in JavaScript. Whether it’s a name, a sentence, or even a symbol, strings are essential for any programming language.
+
+To create a string in JavaScript, you need to wrap your text in quotes. JavaScript supports three types of quotes:
+
+Single Quotes '
+Double Quotes "
+Backticks `
+Examples of Strings
+1. Single and Double Quotes
+Single and double quotes are essentially the same in JavaScript. They both create simple strings.
+
+Example:
+
+const singleQuoteString = 'Hello, world!';
+const doubleQuoteString = "Hello, world!";
+You might choose single quotes if your string contains double quotes:
+
+const quote = 'She said, "JavaScript is amazing!"';
+Or use double quotes if your string contains single quotes:
+
+const contraction = "It's a wonderful day!";
+2. Backticks: Template Literals
+Backticks `, also known as template literals, offer more functionality than single and double quotes. They allow you to:
+
+Embed variables or expressions using ${}:
+
+const name = "Alice";
+const greeting = `Hello, ${name}!`;
+console.log(greeting); // "Hello, Alice!"
+Create multi-line strings:
+
+const multiLine = `This is the first line.
+And this is the second line.`;
+console.log(multiLine);
+Combine text dynamically:
+
+const items = 3;
+const price = 20;
+const total = `You bought ${items} items for $${items * price}.`;
+console.log(total); // "You bought 3 items for $60."
+Backticks are particularly useful when you need to create strings that involve multiple variables or expressions.
+
+Inspecting Data Types with typeof
+You can check if a value is a string using the typeof operator:
+
+const message = "Hello, world!";
+console.log(typeof message); // "string"
+Interactive Activity
+Open VS Code and create a new file called strings.js.
+Try creating strings using:
+Single quotes for a simple greeting.
+Double quotes for a message with a quote inside it.
+Backticks to embed variables or perform calculations within a string.
+Example:
+
+const single = 'Learning JavaScript!';
+const double = "It's an exciting journey!";
+const template = `I solved ${2 + 2} problems today!`;
+
+console.log(single);
+console.log(double);
+console.log(template);
+Use typeof to check the data type of each string:
+console.log(typeof single); // "string"
+console.log(typeof double); // "string"
+console.log(typeof template); // "string"
+
+Learning Objective: Understand JavaScript’s flexible number handling and how to work with basic numbers.
+
+What Are Numbers in JavaScript?
+Numbers are a fundamental data type in JavaScript. Unlike some programming languages, you don’t need to specify whether a number is an integer or a float—JavaScript takes care of it for you. This is because JavaScript is dynamically typed.
+
+Example: Dynamically Typed Numbers
+In JavaScript:
+
+const wholeNumber = 5; // Integer
+const decimalNumber = 3.14; // Float
+In other languages like C, you would need to explicitly declare the type:
+
+int wholeNumber = 5;
+float decimalNumber = 3.14;
+In JavaScript, both integers and decimals fall under the same number type, simplifying how we work with them.
+
+Basic Math Operations
+You can perform all the standard math operations in JavaScript, such as addition, subtraction, multiplication, and division.
+
+Examples:
+const a = 10;
+const b = 5;
+
+console.log(a + b); // Addition: 15
+console.log(a - b); // Subtraction: 5
+console.log(a * b); // Multiplication: 50
+console.log(a / b); // Division: 2
+What About NaN?
+NaN, short for Not a Number, is a special numeric value in JavaScript. It often occurs when you try to perform an invalid mathematical operation.
+
+Examples:
+console.log("hello" * 3); // NaN
+Interestingly, even though NaN stands for "Not a Number," its type is still number:
+
+console.log(typeof NaN); // "number"
+Why? In computing, NaN is technically part of the numeric type system, even though it doesn’t represent a valid number.
+
+Advanced Number Operations
+We’re keeping it simple for now, but JavaScript also has operators for more advanced calculations, like modulus %, exponentiation **, and more.
+
+You’ll learn about these in detail in the upcoming module, Operators and Equality, where we’ll explore:
+
+Arithmetic operators
+Logical operators
+Assignment operators
+Comparison and equality
+For now, focus on getting comfortable with basic numbers and operations.
+
+Interactive Activity
+Let’s put this into practice:
+
+Open VS Code and create a new file called numbers.js.
+Try the following:
+Declare variables for:
+A whole number (e.g., your lucky number).
+A decimal number (e.g., a measurement or value like 3.14).
+Perform addition, subtraction, multiplication, and division with these numbers.
+Log the results to the console.
+Example:
+
+const whole = 7;
+const decimal = 3.14;
+
+console.log(whole + decimal); // Addition
+console.log(whole - decimal); // Subtraction
+console.log(whole * decimal); // Multiplication
+console.log(whole / decimal); // División
+
+Learning Objective: Understand what Booleans are, and how to use them to add basic logic to your programs.
+
+What Are Booleans?
+A Boolean is a data type that can only have one of two values:
+
+true — meaning “yes,” “correct,” or “on.”
+false — meaning “no,” “incorrect,” or “off.”
+Booleans are essential for decision-making in programming. They help control the flow of your program, allowing it to act differently depending on conditions.
+
+Examples of Booleans
+1. Assigning Booleans
+You can directly assign true or false to variables:
+
+const isRaining = true;
+const isWeekend = false;
+2. Using Booleans in Conditions
+Booleans are often used in if statements to decide what code to execute:
+
+const isRaining = true;
+
+if (isRaining) {
+  console.log("Take an umbrella!");
+} else {
+  console.log("Enjoy the sunshine!");
+}
+Booleans in the Real World
+Booleans also play a key role in user interactions. For example:
+
+const isLoggedIn = false;
+
+if (isLoggedIn) {
+  console.log("Welcome back!");
+} else {
+  console.log("Please log in.");
+}
+What About Comparisons?
+Boolean values often come from comparisons. For instance:
+
+const age = 20;
+console.log(age >= 18); // true
+Comparisons return true or false, making them Booleans. We’ll dive into comparisons and logical operators in the Operators and Equality module.
+
+Interactive Activity
+Open VS Code and create a file called booleans.js.
+Declare Boolean variables for:
+Whether it’s your birthday today.
+Whether you’ve completed today’s lesson.
+Write an if statement for each Boolean:
+Display a birthday greeting if true.
+Congratulate yourself for finishing the lesson if true.
+Example:
+
+const isBirthday = false;
+const completedLesson = true;
+
+if (isBirthday) {
+  console.log("Happy Birthday!");
+}
+
+if (completedLesson) {
+  console.log("Great job on completing today's lesson!");
+}
+Experiment with reassigning the Booleans to see how the program reacts.
+
+
+What is null?
+null is a special value in JavaScript used to represent “nothing,” “empty,” or “value unknown.” It is intentionally set by a programmer to indicate that a variable should have no value.
+
+Example: Assigning null
+let age = null / This means "age is unknown or empty."
+let age = null; // This means "age is unknown or empty."
+console.log(age); // null
+Key Points:
+
+null is a primitive value in JavaScript.
+It is not an object (although typeof null returns "object" due to a historical quirk).
+What is undefined?
+undefined is the default value for variables that have been declared but not assigned a value.
+
+Example: Uninitialized Variables
+let x; // No value assigned
+console.log(x); // undefined
+Can you assign undefined?
+While it’s technically possible, it’s not recommended to assign undefined manually. Use null for this purpose instead.
+
+let x = 123;
+x = undefined; // Not recommended
+console.log(x); // undefined
+Key Differences Between null and undefined
+Feature	null	undefined
+Purpose
+
+Represents “no value” (intentional).
+
+Default value for uninitialized variables.
+
+Assigned By
+
+Programmer.
+
+JavaScript.
+
+Type
+
+object (JavaScript quirk).
+
+undefined (its own type).
+
+Understanding the Behavior
+undefined means a variable exists but doesn’t have a value:
+
+let name; // Declared but not assigned
+console.log(name); // undefined
+null means the variable intentionally has no value:
+
+let name = null; // Explicitly set to "no value"
+console.log(name); // null
+They are not strictly equal:
+
+console.log(null === undefined); // false
+But they are loosely equal:
+
+console.log(null == undefined); // true
+Using typeof to Inspect Types
+You can inspect the type of any value using typeof:
+
+let empty = null;
+let notSet;
+
+console.log(typeof empty); // "object" (a JavaScript quirk!)
+console.log(typeof notSet); // "undefined"
+Interactive Activity
+Open VS Code and create a file called null-vs-undefined.js.
+Write the following:
+Declare a variable with null to represent “no value.”
+Declare another variable without assigning a value to make it undefined.
+Use typeof to inspect the type of both variables.
+Log the results to the console.
+Example:
+
+let empty = null; // null value
+let notSet; // undefined
+
+console.log(empty); // null
+console.log(typeof empty); // "object"
+
+console.log(notSet); // undefined
+console.log(typeof notSet); // "undefined"
+Change the value of the null variable to something else and observe the changes.
+
+What Are Objects?
+An Object is the most important data-type and forms the building block for modern JavaScript.
+
+The object type is special. All other types are called “primitive” because their values can contain only a single thing (a string or a number or whatever). In contrast, objects are used to store collections of data and more complex entities.
+
+"in simple language object are used to group variables."
+
+Examples of Objects
+Create a variable of name, and age:
+
+const name = "John";
+const age = 25;
+1. Assigning values to an object
+We can create an object called person and put them together:
+
+const person = {
+	name: 'John',
+	age: 25;
+}
+
+console.log(person) // { name: 'John', age: 25 }
+2. Extract values from an object
+Once you assign the value to an object. We can now extract specific values from that object using the dot notation:
+
+person.name;
+person.age;
+
+console.log(person.name); // John
+console.log(person.age); // 25
+Using Objects to Store Data in Real World
+Objects are very much useful, when it comes to storing data in real world. For example, you want to store the details of a person:
+
+const person = {
+  name: "John",
+  age: 25,
+  isMarried: false,
+  hobbies: ["reading", "coding", "gaming"],
+};
+
+console.log(person); // { name: 'John', age: 25, isMarried: false, hobbies: ['reading', 'coding', 'gaming'] }
+Interactive Activity
+Open VS Code and create a file called objects.js.
+Declare variable person and assign the following properties:
+name: 'John'
+age: 25
+isMarried: false
+hobbies: ['reading', 'coding', 'gaming']
+Extract and display the name and age from the person object.
+Example:
+
+const person = {
+  name: "John",
+  age: 25,
+  isMarried: false,
+  hobbies: ["reading", "coding", "gaming"],
+};
+
+console.log(person.name); // John
+console.log(person.age); // 25
+Experiment with adding more properties to the person object and extracting them.
+
+What are statically typed languages?
+Statically typed languages are those in which the type of each variable andexpression is determined at compile time.
+Once a variable is assigned a specific data type, it cannot store values ofa different type.
+Examples: C, C++, and Java.
+What are dynamically typed languages?
+Dynamically typed languages are those in which the type of each variable isdetermined at runtime.
+Variables can store different data types at different times.
+Javascript is dynamically typed language.
+Change Variable Data Type
+In JavaScript, you can change the data type of a variable at any time. For example, you can change a variable from a number to a string:
+
+let age = 25;
+console.log(age); // 25
+
+age = "25";
+console.log(age); // 25
+Key Differences Between Statically Typed and Dynamically Typed Languages
+Feature	
+Statically Typed
+
+Dynamically Typed
+
+Type Checking	Performed at compile time.	Performed at runtime.
+Flexibility	Less flexible; variables have fixed types.	More flexible; variables can change types.
+Error Detection	Catches type-related errors before execution.	Errors may appear only during execution.
+Performance	Generally faster due to early type checks.	Can be slower due to runtime type checking.
+Examples	C, C++, Java.	JavaScript, Python, Ruby.
+
+We know many operators from school, like: addition +, multiplication *, and subtraction -.
+
+In programming, operators perform operations on data values (operands) and produce results.
+
+For example, in  1 + 2:
+
++ is the operator
+1 is the left operand
+2 is the right operand
+Resulting in 3
+JavaScript includes the following categories of operators:
+Arithmetic Operators: 5 + 3 results in 8.
+Comparison Operators: 5 > 3 results in true.
+Logical Operators: true && false results in false.
+Assignment Operators: let x = 5; x += 3; results in x being 8.
+Conditional (Ternary) Operator: let result = (5 > 3) ? 'Yes' : 'No'; results in result being 'Yes'.
+In the next few lessons, we'll explore these operators in detail.
+
+In this lesson, you'll learn how to use arithmetic operators in JavaScript to perform basic mathematical operations, including addition, subtraction, multiplication, division, modulus, increment, decrement, and exponentiation.
+
+Arithmetic Operators
+Arithmetic operators in JavaScript are essential for performing mathematical operations on numeric operands. These include basic operations like addition +, multiplication *, and subtraction -, which are familiar from school. These operators are fundamental in programming for handling calculations and data manipulation.
+
+Here's how you can use arithmetic operators in JavaScript:
+
+// Arithmetic Operators Demo in JavaScript
+
+// Addition (+)
+const sum = 10 + 5; 
+console.log("Addition: 10 + 5 =", sum); // Output: 15
+
+// Subtraction (-)
+const difference = 20 - 7; 
+console.log("Subtraction: 20 - 7 =", difference); // Output: 13
+
+// Multiplication (*)
+const product = 6 * 4; 
+console.log("Multiplication: 6 * 4 =", product); // Output: 24
+
+// Division (/)
+const quotient = 15 / 3; 
+console.log("Division: 15 / 3 =", quotient); // Output: 5
+
+// Modulus (%) - Remainder after division
+const remainder = 17 % 5; 
+console.log("Modulus: 17 % 5 =", remainder); // Output: 2
+
+// Exponentiation (**)
+const power = 3 ** 3; 
+console.log("Exponentiation: 3 ** 3 =", power); // Output: 27
+
+// Increment (++)
+let incrementValue = 5;
+incrementValue++; // Equivalent to incrementValue = incrementValue + 1
+console.log("Increment: 5++ =", incrementValue); // Output: 6
+
+// Decrement (--)
+let decrementValue = 8;
+decrementValue--; // Equivalent to decrementValue = decrementValue - 1
+console.log("Decrement: 8-- =", decrementValue); // Output: 7
+These operations are straightforward and form the backbone of many programming tasks. Understanding how to use them effectively is crucial for any JavaScript developer. Now that we've covered arithmetic operators, let's move on to comparison operators! 😊
+
+In this lesson, you'll learn how to use comparison operators in JavaScript to compare values and understand the concept of equality, including the differences between strict and loose equality.
+
+Comparison Operators and Equality
+As you've already learned about arithmetic operators, comparison operators work similarly in that they are fundamental tools in programming. You've most likely heard of operators like greater than >, less than <, or equal to ==.
+
+Comparison operators compare two values and return a boolean value: true or false. This is the main takeaway: the return value of a comparison operator is always a boolean.
+
+The topic of equality in JavaScript is closely connected to comparison operators. We'll cover both topics in this lesson. Let's start with an example using two numbers:
+
+// Comparison Operators Demo in JavaScript
+
+const x = 10;
+const y = 5;
+const z = "10"; // A string with the same value as x
+
+// Greater than (>)
+console.log("Is x > y? ", x > y); // true (10 is greater than 5)
+
+// Greater than or equal to (>=)
+console.log("Is x >= y? ", x >= y); // true (10 is greater than 5)
+
+// Less than (<)
+console.log("Is y < x? ", y < x); // true (5 is less than 10)
+
+// Less than or equal to (<=)
+console.log("Is y <= x? ", y <= x); // true (5 is less than 10)
+
+// Loose equality (==) - Compares values, but ignores types
+console.log("Is x == z? ", x == z); // true (10 == "10" because == allows type conversion)
+
+// Strict equality (===) - Compares both value and type
+console.log("Is x === z? ", x === z); // false (10 is a number, "10" is a string)
+
+// Loose inequality (!=) - Checks if values are different, ignoring type
+console.log("Is x != z? ", x != z); // false (10 == "10" due to type coercion)
+
+// Strict inequality (!==) - Checks if values OR types are different
+console.log("Is x !== z? ", x !== z); // true (10 is a number, "10" is a string)
+Everything we've covered so far is straightforward. The key point to remember is that comparison operators always return a boolean value.
+
+The only aspect that requires a deeper look is the difference between: strict ===, !== and loose ==, != equality.
+
+Understanding when to use each is crucial, and we'll explore that in the next lesson!
+
+In this lesson, you'll learn about the differences between strict and loose equality in JavaScript, and why understanding these concepts is crucial for writing reliable code.
+
+Equality in JavaScript
+Equality is a fundamental concept in JavaScript. We say two values are equal when they are the same value. For example:
+
+console.log("This is a string." === "This is a string."); // true
+console.log(2 === 2);  // true
+Note that we use three equal signs === to represent this concept of equality in JavaScript.
+
+Loose Equality ==
+JavaScript also allows us to test loose equality. It is written using two equal signs ==. Things may be considered loosely equal even if they refer to different values that look similar. An example would be:
+
+console.log(5 == "5"); // true
+Let's explore each one in more detail:
+
+Strict Equality Using ===
+The strict equality method of comparison === is a preferred option because its behavior can be easily predicted, which leads to fewer bugs and unexpected results. The JavaScript interpreter compares the values as well as their types and only returns true when both are the same.
+
+console.log(20 === "20"); // false
+The code above will print false because even though the values seem to be the same, they are of different types. The first one is of type String and the second is of type Number.
+
+Here's just one short thing that I wanted to show you. If we strictly compare objects, we're never going to get true. Let's test it out:
+
+console.log({} === {}); // false
+// we get false, even though they have the same type and content, weird
+
+// the same thing happens for arrays as they are actually objects under the hood
+5console.log([] === []); // false
+For the sake of simplicity, we're not going to go into too much depth about non-primitive data types like objects and arrays. That is a rather complex topic on its own. Because of that, later in the course we have a whole separate section called "Value vs Reference." In there, we're going to explore the mentioned inconsistencies of the equality operator.
+
+Loose Equality ==
+We write loose equality using a double equal sign ==. It uses the same underlying logic as strict equality === except for a minor, yet huge, difference.
+
+The loose equality == doesn’t compare the data types.
+
+You should almost never use the loose equality ==.
+
+Douglas Crockford, in his excellent book JavaScript: The Good Parts, wrote:
+
+JavaScript has two sets of equality operators: === and !==, and their evil twins == and !=.
+
+The good ones work the way you would expect. If the two operands are of the same type and have the same value, then === produces true and !== produces false.
+
+The evil twins == and != do the right thing when the operands are of the same type, but if they are of different types, they attempt to change the values. The rules by which they do that are complicated and unmemorable. These are some of the interesting cases:
+
+'' == '0'           // false
+0 == ''             // true
+0 == '0'            // true
+
+false == 'false'    // false
+false == '0'        // true
+
+false == undefined  // false
+false == null       // false
+null == undefined   // true
+Here are a few more examples:
+
+Using the == operator:
+
+true == 1; // true, because 'true' is converted to 1 and then compared
+"5" == 5;  // true, because the string of "5" is converted to the number 5 and then compared
+Using the === operator:
+
+true === 1; // false
+"5" === 5;  // false
+That's exactly how it should be. On the other hand:
+
+5 == "5" // true
+This isn't and should never be equal. "5" is a string, and should be treated like that. As I mentioned, most JavaScript developers completely avoid loose equality == and rely only on strict equality ===. It is considered better practice and causes fewer bugs. From now on, you're going to see me use only strict equality ===.
+
+And for the end, I found for you a great visual representation of strict versus loose equalities:
+
+JavaScript Equality Table
+As you can see, using the loose equality == we get these green boxes all over the place. They're unpredictable. But if we switch to the strict equality ===, we get this nice predictable line.
+
+So what's the moral of the story? Always use three equal signs ===.
+
+Logical Operators Part 1
+Logical operators are used to combine two or more conditions. JavaScript includes three logical operators: || (OR), && (AND), and ! (NOT).
+
+Complete knowledge of logical operators requires an understanding of if/else statements and truthy and falsy values. In this lesson, we'll cover the syntax of logical operators, and we'll revisit them in more detail after covering those topics.
+
+AND Operator &&
+The double ampersand && is known as the AND operator. It checks whether all operands are truthy values. If they are, it returns true; otherwise, it returns false.
+
+// **AND Operator (&&)**
+console.log(true && false); // false
+console.log(true && true);  // true
+console.log(false && false); // false
+You can also pass multiple conditions:
+
+console.log(true && true && false); // false
+OR Operator ||
+The double vertical bar || is known as the OR operator. It checks whether at least one operand is a truthy value. If there is at least one truthy value, it returns true; otherwise, it returns false.
+
+// OR Operator (||)
+// The double vertical bar **||** is known as the OR operator. It checks whether **at least one operand** is a truthy value. If there is at least one truthy value, it returns **true**; otherwise, it returns **false**.
+console.log(true || false); // true
+console.log(true || true);  // true
+console.log(false || false); // false
+You can also pass multiple conditions:
+
+console.log(true || true || false); // true
+NOT Operator !
+The exclamation mark ! is known as the NOT operator. It reverses the boolean result of a condition.
+
+The syntax is straightforward:
+
+**// NOT Operator (!)**
+// The exclamation mark **!** is known as the NOT operator. It reverses the boolean result of a condition.
+console.log(!true);  // false
+console.log(!false); // true
+As you can see, the NOT operator simply converts boolean false to true, and boolean true to false.
+
+In this lesson, you'll learn about assignment operators in JavaScript and how they are used to assign and manipulate values in variables.
+
+Assignment Operators
+An assignment operator assigns a value to its left operand based on the value of its right operand.
+
+Basic Assignment Operator =
+Would you believe me if I told you that you not only know what an assignment operator is, but that you've been using it this whole time? The simplest form of an assignment operator is the = equal sign used for assigning values to variables:
+
+const number = 5;
+This right here is an assignment operator.
+
+Compound Assignment Operators
+We can also combine the assignment operator with one of the arithmetic operators to perform an operation and assignment in one step:
+
+let number = 5;
+
+number += 5; // the same as number = number + 5;
+number -= 5; // the same as number = number - 5;
+number *= 5; // the same as number = number * 5;
+number /= 5; // the same as number = number / 5;
+console.log(number);
+String Concatenation with Assignment
+The addition assignment can also be used with strings! Let me show you:
+
+let string = 'Hello';
+string += ', I am John.';
+console.log(string);
+That's it when it comes to assignment operators—you're basically a pro at them! 😊
+
+In this lesson, you'll learn about the if statement in JavaScript, a fundamental concept for controlling the flow of logic in your programs.
+
+If Statement
+You might have read the title of the current section, "Logic and Control Flow" and wondered what it means. It's much simpler than it may seem.
+
+In every programming language, we have something known as an if statement .
+
+An if statement consists of a condition that is evaluated to either true or false and a block of code. If the condition is true, then the code inside the block will run; otherwise, it's going to be skipped. It's that simple. Let's explore it in an example:
+
+Imagine a nightclub that only allows people over the age of 18 to enter.
+
+const age = 18;
+
+if (age >= 18) {
+   console.log('You may enter, welcome!');
+}
+If-Else Statement
+If statements can also have else if and else statements. To continue with our example:
+
+const age = 18;
+
+if (age >= 18) {
+    console.log('You may enter, welcome!');
+} else if (age === 18) {
+    console.log('You just turned 18, welcome!');
+}
+Notice how we have another condition there. If we run this code, what do you expect to see in your console?
+
+Some of you might expect the code that's under the else if statement, but currently, that would not be the case. Let's test it out.
+
+Why did the first block get logged out? For a really simple reason. It was the first one to pass the check. Our first condition specified that the age must be more than or equal to 18. 18 is indeed equal to 18. So how could we fix this? We can simply change the condition to just a greater than sign.
+
+Else Statement
+But what if the person is younger than 18? We currently aren't handling that case. That's where the else statement comes in handy. We implement it like this:
+
+const age = 18;
+
+if (age > 18) {
+    console.log('You may enter, welcome!');
+} else if (age === 18) {
+    console.log('You just turned 18, welcome!');
+} else {
+    console.log('Go away!');
+}
+Try noticing the difference between the if and the else if compared to the else statement. Can you see it?
+
+An else statement does not have a condition.
+If nothing is matched, else is executed.
+else does not need a condition.
+Simply, if none of the other conditions evaluate to true, else runs.
+That's it! You've just learned one of the key concepts of all programming languages! Congrats! 😊
+
+Truthy and Falsy Values
+In the previous section, we learned about strict and loose equality in JavaScript. Equality always results in a boolean value, which can either be true or false.
+
+Unlike some other languages, true and false in JavaScript are not limited to boolean data types and comparisons . They can take many other forms.
+
+In JavaScript, we have something known as truthy values and falsy values.
+
+Truthy expressions always evaluate to boolean true.
+Falsy expressions always evaluate to boolean false.
+Understanding truthy and falsy values in JavaScript is essential . If you don't know which values evaluate to truthy and which to falsy, you might struggle to read and understand other people's code.
+
+Longtime JavaScript developers often use the terms "truthy" and "falsy" but for those new to JavaScript, these terms can be a bit confusing.
+
+When we say a value is "truthy" in JavaScript, we don't just mean that the value is true. Rather, it means the value coerces to true when evaluated in a boolean context. Let's explore what that means.
+
+Falsy Values
+The easiest way to learn truthy and falsy values is to memorize the falsy values. There are only six falsy values; all other values are truthy.
+
+FALSY VALUES:
+
+false
+0 (zero)
+"", '', `` (empty strings)
+null
+undefined
+NaN (not a number)
+Note: An empty array [] is not falsy.
+
+Truthy Values
+Everything that is not falsy
+
+That's a pretty straightforward list. But how can we actually use truthiness? Let's look at an example.
+
+Using Truthiness in Code
+Taking advantage of truthiness can make your code more concise. You don't need to explicitly check for undefined, "", etc. Instead, you can just check whether a value is truthy. However, there are some caveats to keep in mind.
+
+Example:
+
+let value = "Hello";
+
+if (value) {
+    console.log("This is a truthy value!");
+} else {
+    console.log("This is a falsy value!");
+}
+
+Logical Operators Recap
+Logical operators are used to combine two or more conditions. If you remember correctly, JavaScript includes three logical operators: || (OR), && (AND), ! (NOT).
+
+AND Operator &&
+The double ampersand && is known as the AND operator. It checks whether two operands are truthy values. If they are truthy, it returns true; otherwise, it returns false. They are often used as a condition in an if statement. Let's show that in an example.
+
+Let's say that we want to choose which people may enter our club. To enter, they need to be cool, and they also need to be older than 18.
+
+const age = 19; // age is represented by a number
+const isCool = true; // isCool is represented by a boolean
+
+if (isCool && age > 18) { // notice how we didn't say isCool === true
+    console.log('You may enter.');
+} else {
+    console.log('You cannot enter.');
+}
+Now, the point of this lecture is not an if/else statement. Let's remove that so we can focus purely on the logical operators. The only thing that
+
+const age = 19;
+const isCool = true;
+
+console.log(isCool && age > 18);
+We got true, which is not a surprise. But now, instead of these true boolean values, let's test it with some truthy values.
+
+console.log('truthy' && 1 && 'test' && 999);
+The output of this is 999, and why is that so? Shouldn't the logical operator AND return a boolean value? Here's how it works.
+
+The AND && operator does the following:
+
+It evaluates operands from left to right.
+It converts them to a boolean value.
+If the result is true, it continues to the next value.
+If the result is false, it stops and returns the original value of that operand.
+If all operands have been evaluated to true, it returns the last operand.
+Now you know why 999 was returned; all the values were truthy, and it was the last one on the list.
+
+What if we change one value to be falsy?
+
+console.log('truthy' && 0 && 'test' && 999);
+As you can see, if even one falsy value exists, it's going to stop and immediately return that value.
+
+In other words, AND returns the first falsy value or the last truthy value if no falsy values have been found.
+
+OR Operator ||
+The syntax for the OR operator is two straight vertical lines ||. It checks whether any one of the operands is a truthy value.
+
+Let's see it in action:
+
+console.log('truthy' || 0 || 'test' || 999);
+We get truthy. Why is that? Well, let's see how the OR operator works:
+
+The OR || operator does the following:
+
+For each operand, it converts it to boolean.
+If the result is true, it stops and returns the original value of that operand.
+If all operands have been evaluated to falsy, it returns the last operand.
+In other words, a chain of OR "||" returns the first truthy value or the last one if no truthy value is found.
+
+So now, if we change all of the values to be falsy, it is going to return the last one:
+
+console.log('' || 0 || null || undefined);
+As you can see, we get undefined.
+
+Summary
+JavaScript is lazy. It will want to do the least amount of work possible to get its return value.
+
+With the AND operator: JavaScript will first try to return the first falsy value. If none were found, it will return the last truthy value.
+
+And with the OR operator: JavaScript will first try to return the first truthy value. If none were found, it will return the last falsy value.
+
+In this lesson, you'll learn about the Logical NOT (!) operator in JavaScript, which inverts the truthiness of values, helping you manage conditions effectively.
+
+Not Operator !
+An exclamation sign ! is known as the NOT operator. It reverses the boolean result of the condition.
+
+The syntax is pretty simple:
+
+console.log(!true); // false
+The operator accepts a single argument and does the following:
+
+Converts the operand to boolean type: true/false.
+Returns the inverse value.
+For instance:
+
+console.log(!true); // false
+console.log(!0); // true
+Double Not Operator !!
+A double NOT !! is sometimes used for converting a value to boolean type:
+
+console.log(!!"truthy"); // true
+console.log(!!null); // false
+
+Switch Statement
+The switch statement is extremely similar to the if statement. They can be used interchangeably, but there are situations where a switch is preferred.
+
+With if statements, you mostly have just a few conditions: one for the if, a few for the else if, and the final else statement. If you have a larger number of conditions, you might want to consider using the switch statement. Let's explore how it works.
+
+The switch statement is used to perform different operations based on different conditions.
+
+Let's say that you have a variable called superHero.
+
+var superHero = 'Captain America';
+Based on the name of the superhero, you want to display his voice line.
+
+We can do that using the switch statement. The switch statement takes in a value and then checks it against a bunch of cases:
+
+switch (superHero) {
+    case 'Iron Man':
+        console.log('I am Iron Man...');
+        break;
+    case 'Thor':
+        console.log('That is my hammer!');
+        break;
+    case 'Captain America':
+        console.log('Never give up.');
+        break;
+    case 'Black Widow':
+        console.log('One shot, one kill.');
+        break;
+}
+How It Works
+In this example, we passed the superHero variable to the switch statement.
+
+It executes the first check with a === triple equal sign. It looks something like this:
+
+'Captain America' === 'Iron Man'
+Since this evaluates to false, it skips it and goes to the next one. As soon as it finds the one that matches correctly, it prints the output.
+
+The Break Keyword
+What is that break keyword?
+
+The break keyword ends the switch when we get the correct case.
+
+If we omit the break statement, the next case will be executed even if the condition does not match the case.
+
+The Default Case
+And finally, what if none of the names in the switch match the name of our superHero? There must be something like an else statement, right? There is! That something is called default.
+
+If none of the cases match, the default case is going to be executed. We can implement it like this:
+
+switch (superHero) {
+    case 'Iron Man':
+        console.log('I am Iron Man...');
+        break;
+    case 'Thor':
+        console.log('That is my hammer!');
+        break;
+    case 'Captain America':
+        console.log('Never give up.');
+        break;
+    case 'Black Widow':
+        console.log('One shot, one kill.');
+        break;
+    default:
+        console.log('Enter a valid superhero name');
+        break;
+}
+That's it! Now you know how to use the switch statement. As always, I would advise going into the Chrome console or a code sandbox and playing with it yourself. You learn the most by trying things yourself.
+
+In this lesson, you'll learn about the ternary operator in JavaScript, a concise way to perform simple true or false checks.
+
+Ternary Operator
+You could say that the switch statement is a more complex version of the if statement. There's yet another version of it: the ternary operator.
+
+It should be used just for simple true or false checks.
+
+To explain the ternary operator , let's first take a look at the syntax of a typical if statement:
+
+if (condition) {
+    value if true
+} else {
+    value if false
+}
+Now, the ternary operator:
+
+condition ? value if true : value if false
+Although this is just pseudocode, meaning the code is written in half English and half real syntax, I think you can still see how we would use the ternary. Let's use the same old driver's license example we had when we were learning about the if statement .
+
+if (person.age > 18) {
+    console.log('You can drive');
+} else {
+    console.log('You may not drive yet');
+}
+And now let's transfer it to a ternary. I'll first write it out and then we're going to explore it in detail:
+
+person.age > 18 ? console.log('You can drive') : console.log('You may not drive yet');
+How It Works
+Reading from left to right, we first have our condition.
+Following a question mark ?, is the expression that is going to be executed if the condition evaluates to true.
+Finally, following the colon sign :, is the expression that is going to be executed if the condition evaluates to false.
+At first, ternary operators may seem a bit weird and hard to read. But as you write more of them, you'll quickly get better at understanding them. They'll quickly become your go-to tool if you have just a simple true or false question.
+
+For and While Loops
+Sometimes we want to repeat an action a number of times. For example, let’s imagine we want to display numbers from zero to nine on the console. You might think of doing something like this:
+
+console.log(0);
+console.log(1);
+console.log(2);
+console.log(3);
+console.log(4);
+console.log(5);
+console.log(6);
+console.log(7);
+console.log(8);
+console.log(9);
+But that’s not a good idea at all. Instead, we use for or while loops.
+
+for Loop
+The for loop is more complex, but it’s also the most commonly used loop. It’s called a for loop because it runs "for" a specific number of times .
+
+For loops are declared with three optional expressions separated by semicolons: initialization, condition, and final-expression, followed by a statement (usually a block statement).
+
+for ([initialization]; [condition]; [final-expression]) {
+    // statement
+}
+Initialization: Executed once before the loop starts. It's typically used to define and set up your loop variable.
+Condition: Evaluated at the beginning of every loop iteration and will continue as long as it evaluates to true. If the condition is false at the start of the iteration, the loop will stop executing.
+Final-expression: Executed at the end of each loop iteration, prior to the next condition check, and is usually used to increment or decrement your loop counter.
+Let's use a for loop to print numbers from zero to nine:
+
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+Initialization: We initialize our variable i = 0 because we start counting from 0. "i" stands for index and is a standard for loop variables.
+Condition: We set our condition to i < 10. Before each loop execution, it checks if i is less than ten. If i is equal to or greater than 10, the loop terminates.
+Final-expression: We use i++, which is shorthand for i = i+ 1. Each iteration increases i by one.
+Optional Expressions in for Loop
+Expressions in a for loop are optional, meaning we can skip parts. For example, we can initialize the loop variable before the loop like this:
+
+let i = 0; // we have i already declared and assigned
+for (; i < 10; i++) { // no need for "initialization"
+    console.log(i); // 0, 1, 2, ..., 9
+}
+We can even remove everything, creating an infinite loop :
+
+for (;;) {
+    // repeats without limits
+}
+while Loop
+The while loop is simpler than the for loop and is used when the number of iterations is not known beforehand. It continues to execute a block of code as long as a specified condition evaluates to true.
+
+while (condition) {
+    // statement
+}
+Condition: Evaluated before each loop iteration. If it evaluates to true, the loop continues; if false, the loop stops.
+Let's use a while loop to print numbers from zero to nine:
+
+let i = 0;
+while (i < 10) {
+    console.log(i);
+    i++;
+}
+Initialization: We initialize i = 0 before the loop starts.
+Condition: The loop continues as long as i < 10.
+Increment: We manually increment i within the loop using i++.
+Infinite while Loop
+A while loop can also become an infinite loop if the condition never evaluates to false. Be cautious to ensure that the loop has a way to terminate:
+
+while (true) {
+    // This will run forever unless there's a break statement
+}
+
+Introduction
+In this section, we're going to talk about functions. I'm really excited to show you how functions work! 😊 Functions are one of the most interesting and important parts of any programming language.
+
+So what are functions, and why should we use them? A JavaScript function is a block of code designed to perform a particular task. Remember that: a block of code designed to perform a particular task. We often need to perform similar tasks many times in our application.
+
+Functions are the main building blocks of a program. They allow the code to be called many times without repetition.
+
+You've already seen a function in JavaScript. Not only have you seen it, but you've also used it multiple times by now. It was the function called console.log. console.log has the task of printing values to the console. After finishing this section, you'll be able to create your own functions as well! 😊
+
+Now, let's dive right in!
+
+When talking about functions, you're often going to hear two terms: function declaration and function call. So let's explain each one of these.
+
+Function: A function is a special value with one purpose: it represents some code in your program. Functions are handy if you don’t want to write the same code many times. Calling a function like sayHi() tells the computer to run the code inside it and then go back to where it was in the program. There are many ways to define a function in JavaScript, with slight differences in what they do.
+
+Defining Functions
+A function declaration consists of:
+
+the function keyword
+followed by the function name
+a list of parameters enclosed in parentheses ( )
+and a block of code enclosed in {}
+I'm first going to show you an example of a simple function called square:
+
+function square(number) {
+  return number * number;
+}
+Let's break it down:
+
+Let's break it down:
+
+function: The reserved JavaScript keyword for creating a function.
+square: The name of the function; you can name it however you'd like.
+Parameters: Inside the parentheses ( ), we have parameters. These are values we'll send to our function when calling it. The function square takes one parameter, called number. You can name parameters however you'd like.
+The function body, enclosed in curly braces {}, contains the code to be executed. In this example, it returns the parameter number multiplied by itself.
+
+The return statement is crucial; it specifies the value that will be returned by the function. To retrieve values from functions, we need to call them.
+
+Calling Functions
+Defining a function does not execute it. Defining it simply names the function and specifies what to do when the function is called.
+
+Calling the function actually performs the specified actions with the indicated parameters. For example, if you define the function square, you could call it as follows:
+
+square(5);
+Here, we have the function name followed by parentheses. Inside the parentheses, we put arguments.
+
+Arguments are the values we want to pass to our parameters.
+
+For example, if we send the value of 5, the parameter number becomes 5. The function then multiplies it by itself and returns the result.
+
+As you can see, we get 25. Exactly as expected.
+
+To use the value from the function, we can store it in a variable:
+
+const result = square(5);
+This stores the return value of the function square (called with an argument of 5) in the result variable. Now we can log it to the console:
+
+console.log(result);
+
+Declaring and Invoking Functions
+As we learned in the last section, functions are subprograms designed to perform a particular task.
+
+The code of the function is executed when the function is called. This is known as invoking a function. Let's first revisit the process of creating or defining a function.
+
+There are a few different ways to define a function in JavaScript:
+
+Function Declaration
+A Function Declaration defines a named function. To create a function declaration, you use the function keyword followed by the name of the function.
+
+function name(parameters) {
+  // statements
+}
+Function Expression
+A Function Expression defines a named or anonymous function. An anonymous function is a function that has no name. In the example below, we are setting the anonymous function object equal to a variable.
+
+let name = function(parameters) {
+  // statements
+}
+Arrow Function Expression
+An Arrow Function Expression is a shorter syntax for writing function expressions.
+
+const name = (parameters) => {
+  // statements
+}
+Arrow functions are the most modern way to create JavaScript functions. For that reason, we're going to explore them in much more detail in the upcoming lessons! 😊
+
+Invoking a Function
+Functions execute when they are called. This process is known as invocation. You can invoke a function by referencing the function name, followed by an open and closed parenthesis: ( ).
+
+Let's explore an example.
+
+First, we’ll define a function named sayHi. This function will take one parameter, name. When executed, the function will log that name back to the console:
+
+function sayHi(name) {
+  console.log(`Hi, ${name}`);
+}
+To invoke our function, we call it while passing in the singular argument. Here I am calling this function with the name Joe:
+
+sayHi('Joe'); // Hi, Joe
+Notice how we got back the console log, but we also got back undefined. Why is that? That is connected to the return of the function. If a function does not explicitly return a value, it returns undefined by default. We'll explore this concept further in upcoming lessons.
+
+Return Statement in Functions
+Every function in JavaScript returns undefined unless otherwise specified. That means if we don't explicitly specify what we want our function to return , it will always return undefined.
+
+Let's create a function called double. It will take in one parameter, called number, and return that number multiplied by two. Don't worry about arrow function syntax too much; we'll cover it in greater detail in the next lesson! 😊
+
+Here's a simple function that returns the sum of numbers a and b:
+
+function add(a, b) {
+   return a + b;
+}
+This function will return the sum of a and b. We can then invoke the function and save the return value to a variable:
+
+const sum = add(2, 2);
+When we log out our sum value, we get 4:
+
+console.log(sum); // 4
+Awesome! The return statement not only returns values from a function but also assigns them to whatever called the function!
+
+Immediate Function Termination
+Another important rule of the return statement is that it stops function execution immediately.
+
+Consider this example where we have two return statements in our test function:
+
+function test() {
+  return true;
+  return false;
+}
+
+test(); // true
+The first return statement immediately stops execution of our function and causes it to return true. The code on line three, return false; is never executed.
+
+We can also test it by adding some console logs:
+
+function test() {
+  console.log(1);
+  return true;
+  console.log(2);
+  return false;
+  console.log(3);
+}
+
+test(); // true
+As you can see, we only get the console log with the value of 1. As soon as the function returns something, it doesn't care about anything else. It's done its job, and now other JavaScript code can be run.
+
+In the next lesson, we're going to explore arrow functions, the modern way of writing JavaScript functions.
+
+
+Arrow Functions
+Arrow functions have a key difference from "normal" functions : they do not create their own this value.
+
+The this keyword is a special JavaScript reserved keyword, which we'll explain in more detail later. For now, just know that arrow functions inherit this from their surrounding context. In most cases, this behavior is beneficial, so you'll often see arrow functions used in JavaScript code.
+
+Here's how you can declare a function using arrow function syntax:
+
+const square = (number) => {
+  return number * number;
+}
+Concise Arrow Function Syntax
+Arrow functions also have a shorter and more concise version. Whenever a function consists of a single return statement, you can write it in one line:
+
+const square = (number) => number * number;
+Characteristics of Arrow Functions
+Conciseness: Arrow functions are concise and are often used for one-liners.
+this Context: Arrow functions do not have their own this context. Instead, they inherit this from the closest non-arrow function. This behavior is similar to using a variable or argument that exists in a function above.
+Practically, this means that people use arrow functions when they want to maintain the same this context as the surrounding code.
+
+Arrow functions are a powerful tool in JavaScript, especially when you want to write clean and concise code. As you become more familiar with them, you'll find them to be an invaluable part of your JavaScript toolkit.
+
+
+Parameters vs Arguments
+If you’re new to JavaScript, you may have heard the terms parameters and arguments used interchangeably. While very similar, there is an important distinction between these two concepts.
+
+Parameters are used when defining a function. They are the names created in the function definition. A parameter acts like a variable that is only meaningful inside the function. It won't be accessible outside of the function.
+Arguments are the real values passed to the function when making a function call .
+Let's revisit our example to illustrate this distinction. We would say that our function accepts one parameter. Parameters can be named anything. The only thing that matters is the order. Let's try replacing name with firstName.
+
+const sayHi = (firstName) => {
+  console.log(`Hi, ${firstName}`);
+}
+
+sayHi('Joe'); // Hi, Joe
+Nothing changed; our function still works. This shows that parameters are just names we create for the arguments we're planning to pass into the function . As you can see, when calling the function, we have one argument. The argument is a real JavaScript value, in this case, a string of 'Joe'.
+
+Let's try adding another parameter to practice a bit more. Suppose we want to take in both the name and the age of the person. To do that, we'd need to add a second parameter, separated by a comma ",". We also need to provide an argument to fill the value of age when making a function call:
+
+const logAge = (name, age) => {
+  console.log(`${name} is ${age} years old.`);
+}
+
+logAge('Joe', 25); // Joe is 25 years old.
+Understanding the difference between parameters and arguments is key to effectively using functions in JavaScript. As you practice, you'll become more comfortable with how data flows through your functions .
+
+
+In this lesson, you'll learn best practices for naming functions in JavaScript, ensuring that your code is readable, maintainable, and follows industry standards.
+
+Why Function Names Matter
+Choosing good function names is one of the most underrated yet important aspects of writing clean JavaScript. A well-named function makes your code self-explanatory and easy to understand without requiring excessive comments.
+
+In JavaScript, function names should:
+
+Clearly describe what the function does
+Follow a consistent naming convention
+Be easy to read and understand at a glance
+Let’s dive into some best practices for naming functions! 🚀
+
+1. Use Action Words
+A function should do something, so its name should start with a verb that describes what it does.
+
+✅ Good Examples:
+function getUserData() {} // Retrieves user data
+function sendEmail() {}   // Sends an email
+function calculateTotal() {} // Calculates total price
+function fetchPosts() {}  // Fetches posts from an API
+❌ Bad Examples:
+function userData() {}   // Not clear what this does
+function email() {}      // Is it sending, receiving, or formatting an email?
+function total() {}      // What about the total? Calculating it? Displaying it?
+Tip: A function name should be a small sentence that describes its behavior.
+2. Use camelCase for Function Names
+JavaScript follows the camelCase naming convention for function names.
+
+✅ Correct (camelCase):
+function getUserInfo() {}
+function calculatePrice() {}
+function sendNotification() {}
+❌ Incorrect:
+function GetUserInfo() {}  // ❌ PascalCase (used for classes, not functions)
+function calculate_price() {}  // ❌ Snake_case (not standard in JavaScript)
+function sendnotification() {}  // ❌ Hard to read
+Tip : Use PascalCase FirstLetterCapitalized only for class names in JavaScript.
+3. Keep Function Names Short but Descriptive
+Function names should be short yet meaningful. Avoid unnecessary words while keeping them clear.
+
+✅ Good Examples:
+function fetchOrders() {} // Clear and concise
+function validateInput() {} // Describes the function’s role
+function startGame() {} // Makes it obvious what the function does
+❌ Bad Examples:
+function fetchAllUserOrdersFromDatabaseTable() {} // ❌ Too long and detailed
+function doStuff() {} // ❌ Too vague, what does it actually do?
+function handleClick() {} // ❌ Generic, better to specify: handleButtonClick()
+Tip: Function names should be 3-5 words max, but still be descriptive.
+4. Prefix Functions Based on Their Purpose
+A great way to improve clarity is to use common function prefixes that indicate the function’s purpose.
+
+For retrieving data:
+function getUserProfile() {}
+function fetchOrders() {}
+function retrieveSettings() {}
+For modifying or updating data:
+function updateProfile() {}
+function modifyCart() {}
+function setTheme() {}
+For checking conditions:
+function isUserLoggedIn() {}
+function hasPermission() {}
+function canAccessPage() {}
+For handling events:
+function handleFormSubmit() {}
+function onButtonClick() {}
+function processPayment() {}
+5. Avoid Generic Function Names
+Avoid generic function names like doSomething(), processData(), or handleClick(). These don’t provide any useful information about what the function actually does.
+
+❌ Bad Example:
+function processInfo() {}  // What info? Processing it how?
+function handleStuff() {}  // What "stuff" is being handled?
+✅ Good Example:
+function processUserLogin() {}
+function handleFileUpload() {}
+Tip: Be specific—your function name should tell you exactly what it does.
+6. Use Booleans in Function Names for Yes/No Checks
+If a function returns a boolean value (true/false), use prefixes like:
+
+is → isLoggedIn()
+has → hasPermission()
+can → canEditProfile()
+should → shouldShowModal()
+✅ Good Examples:
+function isUserAdmin() { return true; }
+function hasValidToken() { return false; }
+function canAccessDashboard() { return true; }
+❌ Bad Examples:
+function userAdmin() {} // ❌ Doesn't indicate it returns true/false
+function checkToken() {} // ❌ Not clear if it returns a boolean
+function editProfile() {} // ❌ Sounds like an action, not a check
+Tip: Boolean-returning functions should answer a Yes/No question.
+7. Keep Function Names Consistent
+If you're working in a team or on a large project, keep function names consistent. If you use fetch for one API call, use it for others too.
+
+✅ Consistent Naming:
+function fetchUsers() {}
+function fetchPosts() {}
+function fetchComments() {}
+❌ Inconsistent Naming:
+function getUsers() {}
+function retrievePosts() {}
+function loadComments() {}
+Tip: Pick a consistent verb (fetch, get, retrieve) and use it across related functions.
+8. Avoid Abbreviations and Cryptic Names
+Write function names in full words instead of abbreviations or unclear shorthand.
+
+❌ Bad Examples:
+function calcPr() {}  // ❌ What does "Pr" stand for?
+function getUdt() {}  // ❌ Too cryptic
+✅ Good Examples:
+function calculatePrice() {}
+function getUserData() {}
+Tip: Write code for humans, not just for the computer!
+Summary
+Use action words to describe what the function does
+Follow camelCase for naming functions
+Keep names short but meaningful (3-5 words max)
+Use prefixes to indicate purpose (e.g., get, set, is, has)
+Avoid generic names like doStuff() or processData()
+Use is, has, can for boolean-returning functions
+Stay consistent in naming conventions
+Avoid abbreviations or cryptic names
+Final Thoughts
+Naming functions well is one of the easiest ways to write clean, readable JavaScript code. A function name should tell you exactly what the function does—without needing to read its implementation! If you follow these best practices, your JavaScript code will be much easier to read, maintain, and debug. Now that you know how to name functions properly, let’s move on to writing better, more efficient functions in JavaScript! 🚀
+
+Strings in JavaScript
+In JavaScript, and in any programming language for that matter, we need a way to store text. In JavaScript, we use strings to store text. A string is a primitive data type that represents a sequence of characters.
+
+Creating Strings
+There are a few ways to create strings in JavaScript:
+
+const single = 'This is a string written inside of single quotes.';
+const double = "This is a string written inside of double quotes.";
+const backticks = `This is a string written inside of backticks.`;
+Single and Double Quotes: Strings created with single ' ' and double quotes " " are the same. We can call them simple or basic strings. They represent static textual values.
+Backticks: Strings created with backticks `` provide extended functionality. They are dynamic and allow us to execute JavaScript logic inside them.
+Dynamic Strings with Backticks ``
+Backticks `` allow for string interpolation, where you can embed expressions inside a string:
+
+const backticks = `${2 + 2}`; // 4
+Everything inside $ is evaluated as JavaScript logic.
+Therefore, 2 + 2 returns 4, rather than the string '2 + 2'.
+You can also make function calls inside a `` string:
+
+const sum = (a, b) => a + b;
+const total = `The sum is ${sum(2, 2)}`; // The sum is 4
+Multiline Strings with Backticks ``
+Backtick strings can span multiple lines:
+
+const numbers = `
+  1
+  2
+  3
+`;
+If you tried doing this with basic single or double quote strings, you would get an error.
+
+Handling Quotes Inside Strings
+Consider the following string:
+
+const greeting = 'Hi, I'm John';
+This would produce an error because the single quote after "I" ends the string prematurely. JavaScript doesn't know how to evaluate the rest of the code.
+
+One way to fix this is to use different types of quotes: ' ', " ", ``
+
+const greeting = "Hi, I'm John.";
+But if you have both types of quotes in the sentence, it can get tricky:
+
+const greeting = "Hi, I'm John, "Johnny John".";
+This would break again. To handle this, you can use an escape character \ to treat special characters like normal letters:
+
+const greeting = 'Hi, I\\'m John, \\"Johnny John\\".';
+However, using backticks `` simplifies this:
+
+const greeting = `Hi, I'm John, "Johnny John".`;
+This way, you can write the string however you want without worrying about escaping quotes \.
+
+Great! This lesson covered all the basics of strings, and you've learned it all! Strings are pretty simple, yet powerful tools in JavaScript.
+
+
+String Length
+One thing we often want to know about strings is their length. You might think that calculating this requires complex operations, like looping through all the characters and counting them. Fortunately, it's much simpler than that!
+
+To find the length of a string, you can use the .length property:
+
+const name = 'John';
+
+console.log(name.length); // 4
+Accessing Characters in a String
+Another common operation is accessing a character at a specific position in a string. This is also straightforward.
+
+To get the first letter of a string:
+
+console.log(name[0]); // J
+To get the last letter of a string:
+
+console.log(name[name.length - 1]); // n
+Let's break down this line:
+
+name.length is equal to 4.
+4 minus 1 is 3.
+name[3] is the last letter because string indices start from 0, not 1.
+In the same way, you can access any character in the string:
+
+console.log(name[2]); // h
+In this lesson, we learned how to get the length of a string using the .length property and how to access specific characters within a string using bracket notation [ ].
+
+Now let's learn how we can change the case of a string!
+
+Changing the Case of a String
+What is the case? You've definitely heard about uppercase and lowercase letters. In JavaScript, we have two straightforward methods for changing the character case:
+
+string.toLowerCase()
+string.toUpperCase()
+These methods allow you to convert a string to all lowercase or all uppercase letters, respectively.
+
+Let's see how these methods work in practice:
+
+const mixedCaseString = 'Hello! How are you, James?';
+
+console.log(mixedCaseString.toLowerCase()); // "hello! how are you, james?"
+console.log(mixedCaseString.toUpperCase()); // "HELLO! HOW ARE YOU, JAMES?"
+How It Works
+Notice how we have parentheses( ) on these methods. That's because they are functions, more precisely methods, that we call on a string. These methods do not modify the original string; instead, they return a new string with the desired case transformation.
+
+Now that you've learned how to change the case of a string, let's explore more useful string methods! 😊
+
+Finding Substrings in a String
+There are multiple ways to look for a substring within a string in JavaScript. Let's explore some of the most common methods.
+
+str.indexOf()
+The first method is str.indexOf(substr, pos). It searches for the substr in str, starting from the given position pos, and returns the position where the match was found or -1 if nothing can be found.
+
+For instance:
+
+const exampleString = 'I love ducks, he said, ducks are great!';
+
+console.log(exampleString.indexOf('ducks')); // 7
+console.log(exampleString.indexOf('Ducks')); // -1
+The optional second parameter allows us to search starting from the given position. For instance, the first occurrence of 'ducks' is at position 7. To look for the next occurrence, let’s start the search from position 8:
+
+console.log(exampleString.indexOf('ducks', 8)); // 23
+str.lastIndexOf()
+str.lastIndexOf(substr, position) is similar to indexOf, but it searches from the end of a string to its beginning.
+
+console.log(exampleString.lastIndexOf('ducks')); // 23
+includes()
+If you're just interested in whether a string contains a substring, and not its position, you can use string.includes(). It simply returns true or false.
+
+console.log(exampleString.includes('ducks')); // true
+As with the indexOf method, the optional second argument of str.includes is the position to start searching from.
+
+str.startsWith() & str.endsWith()
+The methods str.startsWith and str.endsWith check if a string starts or ends with a specific substring:
+
+console.log(exampleString.startsWith('I')); // true
+console.log(exampleString.endsWith('ducks')); // false
+These methods provide powerful ways to search and check for substrings within strings, making it easier to manipulate and analyze text in JavaScript.
+
+Getting a Substring
+The best method for getting a substring of a string is str.slice(). This method allows you to extract a portion of a string based on specified start and end positions.
+
+str.slice(start, end)
+The str.slice() method returns the part of the string from start to (but not including) end. If the end parameter is omitted, slice() extracts to the end of the string.
+
+Let's see it in action with an example:
+
+const exampleString = 'hotdog';
+
+console.log(exampleString.slice(3, 6)); // "dog"
+How It Works
+start: The zero-based index at which to begin extraction. In this example, 3 corresponds to the characterd.
+end: The zero-based index before which to end extraction. The character at this index will not be included. In this example, 6 corresponds to the character afterg.
+The str.slice() method is a versatile tool for extracting parts of a string, making it easier to manipulate and analyze text in JavaScript.
+
+Splitting Strings
+Sometimes, we might want to split a string into multiple substrings. For that, we'll use a string method called split().
+
+The split() method divides a string into an array of substrings based on a specified separator. Let's look at some examples.
+
+Splitting a Word into Characters
+To split a word into individual characters, you can use an empty string as the separator:
+
+const exampleString = 'dog';
+
+console.log(exampleString.split('')); // ["d", "o", "g"]
+Splitting a Sentence into Words
+To split a sentence into words , use a space character as the separator:
+
+const exampleString = 'The quick brown fox jumps over the lazy dog.';
+
+console.log(exampleString.split(' ')); // ["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog."]
+Result
+The result of both examples is an array [ ] . The split() method returns an array of substrings , allowing you to easily manipulate and analyze parts of the original string.
+
+The split() method is a powerful tool for breaking down strings into smaller parts, making it easier to work with text data in JavaScript.
+
+Reverse, Repeat, & Trim a String
+Let's explore how to perform these common string operations.
+
+Reverse
+There isn't a built-in string method that reverses a string directly. However, we can use the knowledge we've previously gained! Remember how we can split a string into an array of characters ? Arrays have a reverse() method.
+
+Here's the process:
+
+Split the string into an array of characters.
+Reverse the newly created array.
+Join the array back into a string.
+const exampleString = 'test';
+
+const reversedString = exampleString.split('').reverse().join('');
+console.log(reversedString); // "tset"
+Repeat
+If you want to repeat a string a certain number of times, you can easily do that using the string.repeat() method.
+
+const dogSays = 'woof';
+
+console.log(dogSays.repeat(5)); // "woofwoofwoofwoofwoof"
+Trim
+Sometimes, users might accidentally add extra spaces to their input, such as emails or usernames. We can clean these empty spaces using the trim() method.
+
+const str = '       Hello World!        ';
+
+console.log(str.trim()); // "Hello World!"
+These string operations are powerful tools for text manipulation in JavaScript, helping you clean, format, and transform strings as needed.
+
+Strings Exercise
+We have a string representing a list of guests:
+
+const guestList = 'Our guests are: emma, jacob, isabella, ethan';
+Let's perform a series of operations on this string.
+
+1. Get the Length of the String
+Get the length of the string and store it in a variable called length. ** Expected output:
+
+console.log(length); // 44
+2. Uppercase the Entire String
+Uppercase the entire string and store the result in a variable called uppercasedGuestList.
+
+Expected output:
+
+console.log(uppercasedGuestList); // OUR GUESTS ARE: EMMA, JACOB, ISABELLA, ETHAN
+3. Check if 'ETHAN' is on the List
+Check whether 'ETHAN' is on the uppercasedGuestList. Store the answer in a variable called isEthanOnTheList. The data type of the variable must be a boolean.
+
+Expected output:
+
+console.log(isEthanOnTheList); // true
+4. Create a Substring of Guest Names
+Create a substring that only contains 'EMMA, JACOB, ISABELLA, ETHAN'. Store the answer in a variable called substringGuests.
+
+Expected output:
+
+console.log(substringGuests); // 'EMMA, JACOB, ISABELLA, ETHAN'
+5. Create an Array of Guest Names
+Out of the substring you just created, create an array of names of people that are on the list. Store that array in a variable called guests.
+
+Expected output:
+
+console.log(guests); // [ 'EMMA', 'JACOB', 'ISABELLA', 'ETHAN' ]
+Solutions
+Here are the solutions to the exercises:
+
+// 1. Get the Length of the String
+const length = guestList.length;
+console.log(length); // 44
+
+// 2. Uppercase the Entire String
+const uppercasedGuestList = guestList.toUpperCase();
+console.log(uppercasedGuestList); // OUR GUESTS ARE: EMMA, JACOB, ISABELLA, ETHAN
+
+// 3. Check if 'ETHAN' is on the List
+const isEthanOnTheList = uppercasedGuestList.includes('ETHAN');
+console.log(isEthanOnTheList); // true
+
+// 4. Create a Substring of Guest Names
+const substringGuests = uppercasedGuestList.slice(17);
+console.log(substringGuests); // 'EMMA, JACOB, ISABELLA, ETHAN'
+
+// 5. Create an Array of Guest Names
+const guests = substringGuests.split(', ');
+console.log(guests); // [ 'EMMA', 'JACOB', 'ISABELLA', 'ETHAN' ]
+These exercises provide hands-on practice with string methods, helping you become more comfortable with text manipulation in JavaScript.
+
+
+Introduction [ ]
+In programming, we often need an ordered collection where we have a 1st, 2nd, 3rd element, and so on. For example, we might need this to store a list of users, items, or elements.
+
+JavaScript provides a special data structure named Array [ ] to store ordered collections.
+
+Declaration
+This is how we declare an array, the most important part here is the square brackets [ ]:
+
+const months = ['January', 'February', 'March', 'April'];
+Array elements are numbered, starting with zero.
+
+Accessing Elements
+We can get an element by its index using square brackets [ ]:
+
+console.log(months[0]); // 'January'
+Modifying Elements
+We can replace an element:
+
+months[2] = 'Not March'; // [ 'January', 'February', 'Not March', 'April' ]
+Or add a new one to the array:
+
+months[4] = 'May'; // [ 'January', 'February', 'Not March', 'April', 'May' ]
+Array Length
+The total count of the elements in the array is its length:
+
+console.log(months.length); // 5
+Storing Different Types
+An array can store elements of any type:
+
+const arr = [
+    'Apple',
+    { name: 'John' },
+    true,
+    function() {
+        console.log('hello');
+    }
+];
+Looping Through Arrays
+You'll often need to loop through all the elements of an array. That's where the for loop comes in handy:
+
+for (let i = 0; i < months.length; i++) {
+    console.log(months[i]);
+}
+Later, we'll dedicate a few lessons to different built-in array methods for looping. These methods allow us to loop faster, with added functionality and less code. Arrays are a powerful tool in JavaScript, enabling you to manage collections of data efficiently.
+
+In this lesson, you'll learn about various array methods in JavaScript, which provide powerful ways to manipulate and interact with arrays. We'll cover both basic and advanced methods, with examples to illustrate their use.
+
+Array Methods
+Arrays in JavaScript come with a variety of built-in methods that allow you to manipulate their data, such as adding or removing elements at certain positions. Let's take a look at some of the most basic and useful ones.
+
+Basic Array Methods
+
+array.push(value)
+Adds a new element to the end of the array.
+
+const names = ["Jon", "Bob", "David"];
+names.push("Mark");
+console.log(names); // ["Jon", "Bob", "David", "Mark"]
+
+array.pop()
+Removes the last element of an array and returns it.
+
+const lastElement = names.pop();
+console.log(lastElement); // "Mark"
+console.log(names); // ["Jon", "Bob", "David"]
+
+array.shift()
+Removes the first element of an array and returns it.
+
+const firstElement = names.shift();
+console.log(firstElement); // "Jon"
+console.log(names); // ["Bob", "David"]
+
+array.unshift(value)
+Adds a new value to the start of an array and returns the new length.
+
+names.unshift("Dean");
+console.log(names); // ["Dean", "Bob", "David"]
+
+array.splice(start, deleteCount, ...items)
+Adds or removes elements from any position in an array.
+
+names.splice(1, 0, "Jenny");
+console.log(names); // ["Dean", "Jenny", "Bob", "David"]
+
+array.slice(start, end)
+Creates a new array containing elements from the start index up to, but not including, the end index.
+
+const slicedNames = names.slice(1, 3);
+console.log(slicedNames); // ["Jenny", "Bob"]
+Summary
+Here's a code block that demonstrates these basic methods:
+
+const names = ['Jon', 'Bob', 'David', 'Mark'];
+
+// Array Push - Adds a new value to the end of the array.
+names.push('Dean');
+console.log(names); // ["Jon", "Bob", "David", "Mark", "Dean"]
+
+// Array Pop - Deletes the last element of an array
+const lastElement = names.pop();
+console.log(lastElement); // "Dean"
+console.log(names); // ["Jon", "Bob", "David", "Mark"]
+
+// Array Shift - Deletes the first element of an array
+const firstElement = names.shift();
+console.log(firstElement); // "Jon"
+console.log(names); // ["Bob", "David", "Mark"]
+
+// Array Unshift - Adds a new value to the start of an array
+names.unshift('Dean');
+console.log(names); // ["Dean", "Bob", "David", "Mark"]
+
+// Array Splice - It adds/removes values from any position of an array
+names.splice(2, 0, 'Jenny', 'Johnny');
+console.log(names); // ["Dean", "Bob", "Jenny", "Johnny", "David", "Mark"]
+
+// Array Slice - Copies certain parts of an array into a newly created array
+const slicedNames = names.slice(1, 3);
+console.log(slicedNames); // ["Bob", "Jenny"]
+Advanced Array Methods
+
+concat(...items)
+Returns a new array with all members of the current one and adds items to it.
+
+const moreNames = ["Eve", "Frank"];
+const allNames = names.concat(moreNames);
+console.log(allNames); // ["Dean", "Bob", "Jenny", "Johnny", "David", "Mark", "Eve", "Frank"]
+
+indexOf(item, pos)
+Looks for an item starting from position pos, returns the index if found or -1 if not found.
+
+console.log(names.indexOf("Bob")); // 1
+
+lastIndexOf(item, pos)
+Same as indexOf() but starts from the end.
+
+console.log(names.lastIndexOf("Bob")); // 1
+
+includes(value)
+Returns true if the array contains the value, otherwise returns false.
+
+console.log(names.includes("David")); // true
+
+find(func)
+Returns the first element for which func returns a truthy value.
+
+const foundName = names.find(name => name.startsWith("D"));
+console.log(foundName); // "Dean"
+
+filter(func)
+Filters elements through func, returning all values that make it return true.
+
+const filteredNames = names.filter(name => name.length > 3);
+console.log(filteredNames); // ["Dean", "Jenny", "Johnny", "David"]
+
+findIndex(func)
+Like find, but returns the index of the first matched element.
+
+const index = names.findIndex(name => name.startsWith("J"));
+console.log(index); // 2
+
+forEach(func)
+Calls func for every element. Does not return anything.
+
+names.forEach(name => console.log(name));
+// Logs: "Dean", "Bob", "Jenny", "Johnny", "David", "Mark"
+
+map(func)
+Creates a new array from the results of calling func for every element.
+
+const uppercasedNames = names.map(name => name.toUpperCase());
+console.log(uppercasedNames); // ["DEAN", "BOB", "JENNY", "JOHNNY", "DAVID", "MARK"]
+
+sort(func)
+Sorts the array in-place and returns it.
+
+names.sort();
+console.log(names); // ["Bob", "David", "Dean", "Jenny", "Johnny", "Mark"]
+
+reverse()
+Reverses the array and returns it.
+
+names.reverse();
+console.log(names); // ["Mark", "Johnny", "Jenny", "Dean", "David", "Bob"]
+
+split(by)
+Converts a string to an array.
+
+const str = "apple,banana,cherry";
+const fruits = str.split(",");
+console.log(fruits); // ["apple", "banana", "cherry"]
+
+join(by)
+Converts an array to a string.
+
+const fruitString = fruits.join(", ");
+console.log(fruitString); // "apple, banana, cherry"
+
+reduce(func, initialValue)
+Calculates a single value over the array by calling func for each element.
+
+const numbers = [1, 2, 3, 4];
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // 10
+
+some(func)
+Returns true if any element passes the test implemented by func.
+
+const hasShortName = names.some(name => name.length < 4);
+console.log(hasShortName); // true
+
+every(func)
+Returns true if all elements pass the test implemented by func.
+
+const allLongNames = names.every(name => name.length > 3);
+console.log(allLongNames); // true
+
+fill(value, start, end)
+Fills the array with a repeating value from index start to end.
+
+const filledArray = new Array(3).fill("Hello");
+console.log(filledArray); // ["Hello", "Hello", "Hello"]
+These examples provide a practical understanding of how each array method works, enabling you to effectively manipulate arrays in JavaScript.
+
+In this lesson, you'll learn about the array.forEach method in JavaScript, which is used to execute a function for each element in an array. This method provides a cleaner and more readable alternative to the traditional for loop for certain use cases.
+
+What is array.forEach method?
+The array.forEach method performs an action for each element in the array. While you can achieve the same result using a standard for loop, forEach offers a more concise and expressive syntax.
+
+Let's take an example where we need to log each value in an array called myArray to the console, along with their respective indices . Here's how we can do it using a standard for loop:
+
+let names = ['Jon', 'Jenny', 'Johnny'];
+
+for (let i = 0; i < names.length; i++) {
+    console.log(i, names[i]);
+}
+
+// Output:
+// 0 'Jon'
+// 1 'Jenny'
+// 2 'Johnny'
+In this case, we declare and initialize a variable i, and the loop compares it with array.length. If the expression evaluates to true, the loop executes. After the loop body is executed, the value of i increments by one.
+
+We can eliminate this process using the array.forEach method!
+Syntax
+Here is the syntax of the array.forEach method:
+
+array.forEach((value, index) => {
+    // ...
+});
+The first argument of the forEach method is the function you want to execute for each element of the array. This callback function can have three arguments:
+
+The value of the current element
+The index of the current element
+The array itself
+So, we can perform the same action using forEach in this manner:
+
+let names = ['Jon', 'Jenny', 'Johnny'];
+
+names.forEach((value, index) => {
+    console.log(index, value);
+});
+Using a Named Function as a Callback
+If you want to use a named function as a callback, it can be done like this:
+
+function logArrayElement(element, index) {
+    console.log(index, element);
+}
+
+names.forEach(logArrayElement);
+Ensure that the order of arguments in the predefined/named function used as the callback matches the syntax requirements .
+
+Return Value
+This method returns undefined and is not chainable, meaning you can't call another method on the array after using forEach. Therefore, you cannot use cascading notation with forEach.
+
+let returnValue = names.forEach(function (value) {
+    console.log(value);
+});
+
+console.log(returnValue); // undefined
+Typically, this method is used to execute side effects, such as logging all the elements in the array after performing a series of actions on the array.
+
+How to use it
+Use When:
+
+The callback function is to be executed on every single element of the array.
+You want to improve performance (provided the first condition is satisfied).
+Don't Use When:
+
+You want to stop or break the loop when some condition is true. For example, if you want to log elements of myArray but break the loop if the value of the current element is 3, you must use a standard for loop.
+The callback function is asynchronous. Instead, use the standard for loop.
+Example
+Here is a real example where array.forEach can be used:
+
+let sum = 0;
+const numbers = [65, 44, 12, 4];
+
+numbers.forEach((number) => {
+    sum += number;
+});
+
+console.log(sum); // 125
+The array.forEach method is a powerful tool for iterating over arrays, providing a clean and expressive way to perform actions on each element.
+
+In this lesson, you'll learn about the array.map() method in JavaScript, which is used to create a new array by applying a function to each element of an existing array.
+
+Array.map()
+The key difference between array.map() and array.forEach() is that the map() method allocates memory to store and return a new array, while forEach() does not allocate memory and returns undefined.
+
+The forEach() method is used for executing a function on each array element without returning a new array, whereas map() returns a new array with the results of applying a function to each element.
+
+When using map(), you can think of it as iterating over each element and transforming it in some way, resulting in a new array.
+
+How to use
+Let's consider a local shop's inventory:
+
+// A local shop's inventory
+const inventory = [
+    { price: 5, name: 'eggs' },
+    { price: 5, name: 'ham' },
+    { price: 5, name: 'mayo' },
+    { price: 5, name: 'bread' },
+];
+
+// A customer asks for a list of all the inventory they have
+const requestFullInventory = inventory.map(item => item);
+
+console.log(requestFullInventory); // requestFullInventory is filled with the inventory that we have
+How it works
+Transformation: The map() method applies a function to each element of the array, transforming it in some way.
+New Array: It returns a new array containing the transformed elements, leaving the original array unchanged.
+The array.map() method is a powerful tool for creating new arrays based on transformations of existing arrays , making it an essential part of functional programming in JavaScript.
+
+In this lesson, you'll learn about the array.filter() method in JavaScript, which is used to create a new array containing elements that pass a specified test. This method is a powerful tool for extracting elements from an array based on specific criteria .
+
+Array.filter()
+The filter() method creates a new array with all elements that pass the test implemented by the provided function. It's a concise and efficient way to filter out unwanted elements from an array.
+
+Filtering Positive Numbers
+Let's start with a simple example where we filter out positive numbers from an array:
+
+var numbers = [-10, 0, -2, 15, -36, 25]; // Array of positive and negative integers
+
+// Using filter to get positive numbers
+var positiveNumbers = numbers.filter(function(number) {
+    return number >= 0; // Elements that pass (true) the test are kept
+});
+
+console.log("Positive numbers: " + positiveNumbers); // [0, 15, 25]
+Using a For Loop to Filter
+You can think of the filter() method as a more concise and readable alternative to using a for loop for filtering:
+
+var positiveNumbersUsingLoop = []; // Array to store positive numbers
+
+for (var i = 0; i < numbers.length; i++) {
+    if (numbers[i] >= 0) {
+        positiveNumbersUsingLoop.push(numbers[i]);
+    }
+}
+
+console.log("Positive numbers using loop: " + positiveNumbersUsingLoop); // [0, 15, 25]
+Example: Rewarding Employees with Overtime
+A startup wants to reward employees with 7 or more hours of overtime:
+
+var employeesData = [
+    { name: "Sebastian Zuñiga", overtime: 5 },
+    { name: "Cardi Vee", overtime: 10 },
+    { name: "George Lopez", overtime: 12 }
+];
+
+var selectedEmployees = employeesData.filter(function(employee) {
+    return employee.overtime >= 7;
+});
+
+console.log("Filtered Employees data: ", selectedEmployees);
+Example: Filtering Cities by Population
+Filter cities with a population greater than 6,000,000:
+
+let cities = [
+    { name: 'Los Angeles', population: 2200000 },
+    { name: 'New York', population: 8000000 },
+    { name: 'Chicago', population: 6900098 },
+    { name: 'Houston', population: 2099451 },
+    { name: 'Philadelphia', population: 1535079 }
+];
+
+var filteredCities = cities.filter(function(city) {
+    return city.population > 6000000;
+});
+
+filteredCities.forEach(city => console.log("Filtered Cities data: " + city.name));
+Example: Students with an A Grade
+Filter students with a grade of 90 or above:
+
+const students = [
+    { name: 'Quincy', grade: 96 },
+    { name: 'Jason', grade: 84 },
+    { name: 'Alexis', grade: 100 },
+    { name: 'Sam', grade: 65 },
+    { name: 'Katie', grade: 90 }
+];
+
+var aStudents = students.filter(function(student) {
+    return student.grade >= 90;
+});
+
+console.log("Students with an A: ", aStudents);
+Example: Real Estate Listings
+Filter real estate listings based on user search criteria:
+
+const dataListings = [
+    { address: "2301 Grand Avenue", city: "Oklahoma", state: "TX", rooms: 1, price: 220000, floorSpace: 2000, homeType: "Ranch" },
+    { address: "3205 Chucky Avenue", city: "Houston", state: "TX", rooms: 8, price: 500000, floorSpace: 5000, homeType: "Apartment" },
+    { address: "1234 Numbers Avenue", city: "Dallas", state: "TX", rooms: 5, price: 300000, floorSpace: 3500, homeType: "Studio" }
+];
+
+const searchData = {
+    city: "Oklahoma",
+    homeType: "Ranch",
+    rooms: 1
+};
+
+var newDataListings = dataListings.filter(item => {
+    return (
+        searchData.city === item.city &&
+        searchData.homeType === item.homeType &&
+        searchData.rooms === item.rooms
+    );
+});
+
+console.log("Filtered Listings: ", newDataListings);
+The array.filter() method is a versatile tool for extracting elements from arrays based on specific conditions, making it an essential part of data manipulation in JavaScript.
