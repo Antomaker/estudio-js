@@ -2280,3 +2280,481 @@ var newDataListings = dataListings.filter(item => {
 
 console.log("Filtered Listings: ", newDataListings);
 The array.filter() method is a versatile tool for extracting elements from arrays based on specific conditions, making it an essential part of data manipulation in JavaScript.
+
+Array.find()
+The find() method returns the first element in the array that satisfies the provided testing function. If no elements satisfy the testing function, undefined is returned.
+
+Example: Finding a State
+Let's start with a simple example where we find a specific state in an array:
+
+var states = ["tx", "ca", "nm"];
+
+// The find method for arrays returns the first value that satisfies the condition
+var stateFoundUsingFind = states.find(function(state) {
+    return state === "tx";
+});
+
+console.log("First value to satisfy the condition is: " + stateFoundUsingFind); // "tx"
+
+// Using a for loop to achieve the same result
+for (var i = 0; i < states.length; i++) {
+    if (states[i] === "tx") {
+        console.log("First value to satisfy the condition: " + states[i]); // "tx"
+        break; // Exit the loop once the condition is satisfied
+    }
+}
+Example: Finding an Item in a Store
+Here's an example where we find an item in a store's inventory:
+
+var itemsInStore = ["fruits", "tvs", "ipods", "carpets"];
+var customerRequestedItem = "tvs";
+
+// Returns item if it is found and undefined if it is not
+var targetItem = itemsInStore.find(function(item) {
+    return item === customerRequestedItem;
+});
+
+console.log("Target item: " + targetItem); // "tvs"
+Example: Finding a Tree in a Store
+Let's find a specific type of tree in a tree store:
+
+var treeStore = ["birch", "maple", "oak", "poplar"];
+var targetTree = "birch";
+
+var tree = treeStore.find(function(tree) {
+    return tree === targetTree;
+});
+
+console.log("Tree: " + tree); // "birch"
+The array.find() method is a useful tool for quickly locating elements in an array that meet specific criteria , making it an essential part of data manipulation in JavaScript.
+
+Array.includes()
+The includes() method checks if an array contains a certain value and returns true or false based on the result. This method is case-sensitive, meaning it distinguishes between uppercase and lowercase letters.
+
+Example: Checking for a Book in a Bookshelf
+Let's say we're a librarian looking for a particular book inside a "bookshelf" array:
+
+var bookshelf = ["Moby Dick", "Little Women", "The Great Gatsby", "Pride And Prejudice"];
+Here's how you can use the includes() method to check for a specific book:
+
+if (bookshelf.includes("Moby Dick")) {
+    console.log("The book you were looking for was found.");
+} else {
+    console.log("Couldn't find the book, sorry. :c");
+}
+How It Works
+The includes() method scrolls through the entire array and returns true once it finds the first instance of the value it received.
+If the value is not found , it returns false.
+The array.includes() method is a straightforward and efficient way to check for the presence of a value in an array , making it a useful tool for data validation and search operations in JavaScript.
+
+Array.sort()
+The sort() method sorts the elements of an array. By default, it sorts the elements as strings in alphabetical and ascending order. This can lead to unexpected results when sorting numbers, as they are compared based on their character values.
+
+Example: Sorting an Array of Names
+Let's take an example of sorting an array of names alphabetically:
+
+var names = ["Anne", "Carl", "Bob", "Dean"];
+
+// Sort the array alphabetically
+names.sort();
+
+console.log(names); // ["Anne", "Bob", "Carl", "Dean"]
+Important Note on Sorting Numbers
+The sort() method, when used without a comparison function, converts the elements to strings and sorts them alphabetically. This can cause issues when sorting numbers , as they are sorted based on their character values rather than their numeric values. For example, 10 would come before 2 because 1 is less than 2.
+
+To sort numbers correctly, you need to provide a comparison function:
+
+var numbers = [10, 2, 5, 1, 9];
+
+// Sort numbers in ascending order
+numbers.sort((a, b) => a - b);
+
+6console.log(numbers); // [1, 2, 5, 9, 10]
+How It Works
+Strings: By default, sort() arranges strings in alphabetical order.
+Numbers: To sort numbers correctly, use a comparison function that defines the sort order.
+The array.sort() method is a versatile tool for organizing data, but it's important to understand its behavior with different data types to avoid unexpected results.
+
+Array.some()
+The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns true if the callback function returns a truthy value for any array element; otherwise, it returns false.
+
+Example: Checking for Even Numbers
+Let's say we want to check if there are any even numbers in an array:
+
+var numbers = [1, 3, 5, 8, 9];
+
+// Check if there is at least one even number
+var hasEvenNumber = numbers.some(function(number) {
+    return number % 2 === 0;
+});
+
+console.log(hasEvenNumber); // true
+Array.every()
+The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns true if the callback function returns a truthy value for every array element; otherwise, it returns false.
+
+Example: Checking for All Positive Numbers
+Let's say we want to check if all numbers in an array are positive:
+
+var numbers = [1, 3, 5, 8, 9];
+
+// Check if all numbers are positive
+var allPositive = numbers.every(function(number) {
+    return number > 0;
+});
+
+console.log(allPositive); // true
+How They Work
+some(): Returns true if at least one element passes the test.
+every(): Returns true if all elements pass the test.
+The array.some() and array.every() methods are powerful tools for evaluating conditions across array elements, making them essential for data validation and logic checks in JavaScript.
+
+Array.reduce()
+The reduce() method starts with all the elements from an array, iterates over them, and computes them to a single value . It's one of the more complex array methods, but it's incredibly powerful for tasks like summing numbers , finding maximum values , and more.
+
+Example: Calculating Total Price
+Let's say we have a grocery list with all the groceries we want to buy, along with their prices:
+
+const groceryList = [29, 12, 45, 35, 87, 110];
+We want to calculate the total price of all the items. This is a perfect example for the reduce method.
+
+Using forEach to Sum Prices
+Here's how you might solve this with a forEach loop:
+
+const groceryItems = [29, 12, 45, 35, 87, 110];
+
+let total = 0;
+groceryItems.forEach((item) => total += item);
+
+console.log(total); // 318
+While this works, it requires an external variable to keep track of the total.
+
+Using reduce to Sum Prices
+Now, let's use the reduce method to achieve the same result without an external variable:
+
+const groceryItems = [29, 12, 45, 35, 87, 110];
+
+const total = groceryItems.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log(total); // 318
+How reduce() Works
+Accumulator: The initial value (in this case, 0) that accumulates the results of the function.
+CurrentValue: The current element being processed in the array.
+The reduce method takes two arguments:
+
+A callback function that runs for each element in the array.
+The initial value of the accumulator.
+The result of the reduce method is always a single value. In this example, that value is the total of all item prices.
+
+Example: Sum of Numbers
+Here's another example where we calculate the sum of numbers in an array:
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const sum = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log(sum); // 55
+Understanding the Process
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// a = 0, c = 1 => a = 1
+// a = 1, c = 2 => a = 3
+// a = 3, c = 3 => a = 6
+// ...
+
+const sum = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log(sum); // 55
+Simplifying with ES6
+You can simplify the reduce function using ES6 syntax for an instant return:
+
+const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue);
+console.log(sum); // 55
+Exercise: Find Maximum Value
+Here's an exercise to find the maximum value in an array:
+
+const values = [5, 2, 3, 1, 2];
+
+const findMax = (acc, val) => (val > acc ? val : acc);
+
+const maximumNumber = values.reduce(findMax);
+
+console.log(maximumNumber); // 5
+The array.reduce() method is a versatile tool for aggregating data, making it an essential part of functional programming in JavaScript.
+
+Objects Introduction
+Objects are the most important data type and building block for modern JavaScript. Unlike primitive data types (numbers, strings, booleans), which store a single value, objects can store multiple values and more complex data.
+
+Objects in JavaScript can be compared to real-life objects. For example, consider a cup: it has properties like color, design, weight, and material. Similarly, JavaScript objects have properties that define their characteristics.
+
+What are Objects?
+In simple terms, an object is an unordered collection of related data in the form of key-value pairs.
+
+Creating an Object
+Let's create a simple object to see how it works:
+
+const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 25,
+};
+Curly Braces: To create an object, use curly braces {} and assign it to a variable.
+Key-Value Pairs: Inside the object, define key-value pairs. For example, the key firstName has the value 'John'.
+Each key in the object is referred to as a property. Objects allow us to group related data together, unlike separate variables where each value stands alone:
+
+const firstName = 'John';
+const lastName = 'Doe';
+const age = 25;
+Unordered Nature of Objects
+Objects are unordered, meaning the order of properties can change and won't always stay the same as declared. This is perfectly fine because, with objects, we focus on the data rather than the order.
+
+Nested Objects and Different Data Types
+Values in an object can be of any type, including other objects. For example, if our person has a car, the car can be an object with its own properties:
+
+const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 25,
+    car: {
+        year: 2015,
+        color: 'Red',
+    },
+};
+This demonstrates that we can nest objects within other objects.
+
+Using Variables as Values
+We can also use variables as values in an object. A variable is essentially a container for a value, so we can do the following:
+
+const firstName = 'Johnny';
+
+const person = {
+    firstName: firstName,
+};
+
+console.log(person); // { firstName: 'Johnny' }
+Shorthand Property Names
+If the key and value have the same name, JavaScript allows us to use shorthand syntax:
+
+const person = {
+    firstName,
+};
+
+console.log(person); // { firstName: 'Johnny' }
+This shorthand makes the code cleaner and easier to read.
+
+Objects are a versatile and powerful feature in JavaScript, enabling you to model complex data and relationships in your applications.
+
+Accessing, Adding, and Updating an Object's Properties
+Objects in JavaScript are collections of key-value pairs, and you can access, add, or update these properties using two main notations: dot notation and square bracket notation.
+
+Dot Notation .
+Dot notation is the most common way to access, add, or update properties of an object. It provides a straightforward syntax for interacting with object properties using .
+
+Accessing Properties
+To retrieve a value from an object, use dot notation:
+
+const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 25,
+};
+
+console.log(person.firstName); // "John"
+Adding or Updating Properties
+You can also use dot notation to add new properties or update existing ones:
+
+// Adding a new property
+person.dog = { name: 'Fluffy', age: 2 };
+
+// Updating an existing property
+person.age = 26;
+
+console.log(person);
+// { firstName: 'John', lastName: 'Doe', age: 26, dog: { name: 'Fluffy', age: 2 } }
+Square Bracket Notation [ ]
+Square bracket notation [ ] is another way to access properties of an object. It offers more flexibility, especially when dealing with dynamic property names or keys that are not valid JavaScript identifiers.
+
+Accessing Properties
+You can access properties using square brackets:
+
+console.log(person['firstName']); // "John"
+Dynamic Property Access
+Square bracket notation allows for dynamic property access, which is useful when the property name is stored in a variable:
+
+const property = 'age';
+console.log(person[property]); // 26
+Handling Unusual Key Names
+Square bracket notation is also necessary when dealing with keys that contain spaces, dashes, or other characters not allowed in JavaScript identifiers:
+
+// Adding properties with unusual key names
+person['this-is-a-key-with-dashes'] = 'value1';
+person['this is another key'] = 'value2';
+
+console.log(person['this-is-a-key-with-dashes']); // "value1"
+console.log(person['this is another key']); // "value2"
+
+// Using dot notation with these keys would result in an error
+// person.this-is-a-key-with-dashes - error
+// person.this is another key - error
+Understanding how to work with object properties is crucial for effectively managing data in JavaScript applications. Dot notation . and square bracket [ ] notation each have their use cases, and knowing when to use each will enhance your coding skills.
+
+What is a Method?
+A method is a function associated with an object. Simply put, a method is a property of an object that is a function. Methods allow objects to perform actions and are defined similarly to regular functions, but they are assigned as properties of an object.
+
+Defining Methods
+Methods can be defined in two main ways:
+
+Assigning a Function to an Object Property
+var myObj = {
+  myMethod: function(params) {
+    // ...do something
+  },
+
+  // OR using shorthand syntax
+  myOtherMethod(params) {
+    // ...do something else
+  }
+};
+In this example, myMethod and myOtherMethod are methods of myObj.
+
+Using a Function as a Method
+You can assign a function to an object property, making it a method:
+
+objectName.methodname = functionName;
+Where objectName is an existing object, methodname is the name you are assigning to the method, and functionName is the name of the function.
+
+Calling Methods
+You can call a method in the context of the object as follows:
+
+object.methodname(params);
+Defining Methods for an Object Type
+You can define methods for an object type by including a method definition in the object constructor function.
+
+For example, let's define a function that formats and displays the properties of Car objects:
+
+function displayCar() {
+  var result = `A Beautiful ${this.year} ${this.make} ${this.model}`;
+  pretty_print(result);
+}
+Here, pretty_print is a function to display a formatted string. Notice the use of this to refer to the object to which the method belongs.
+
+Adding Methods to an Object Constructor
+You can make this function a method of Car by adding the statement:
+
+this.displayCar = displayCar;
+So, the full definition of Car would now look like this:
+
+function Car(make, model, year, owner) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.owner = owner;
+  this.displayCar = displayCar;
+}
+Calling Methods on Objects
+You can call the displayCar method for each of the Car objects as follows:
+
+var car1 = new Car('Toyota', 'Corolla', 2020, 'Alice');
+var car2 = new Car('Honda', 'Civic', 2019, 'Bob');
+
+car1.displayCar();
+car2.displayCar();
+Methods are a powerful feature in JavaScript, enabling objects to have behaviors and perform actions. Understanding how to define and use methods is essential for working with objects and building complex applications.
+
+Built-in Object Methods
+Objects in JavaScript are collections of key-value pairs, capable of holding various data types, including strings, numbers, and booleans. All objects in JavaScript inherit from the parent Object constructor, which offers several built-in methods to simplify object manipulation. Unlike array methods like sort() and reverse(), which are used on array instances, object methods are static and used directly on the Object constructor, taking the object instance as a parameter.
+
+Key Built-in Object Methods
+Object.create()
+The Object.create() method creates a new object linked to the prototype of an existing object. This is useful for extending objects without duplicating code.
+
+const role = {
+    title: 'developer',
+    type: 'full-time',
+    isOpen: true,
+    showDetails() {
+        const status = this.isOpen ? 'is open for applications' : "is not open for applications";
+        console.log(`The ${this.title} role is ${this.type} and ${status}.`);
+    }
+};
+
+const designer = Object.create(role);
+designer.title = "designer";
+designer.showDetails(); // The designer role is full-time and is open for applications.
+Object.keys()
+Object.keys() returns an array of an object's keys, allowing you to iterate over them or check their count.
+
+const team = {
+    leader: 'Alice',
+    developer: 'Bob',
+    designer: 'Charlie',
+    tester: 'Dana'
+};
+
+const keys = Object.keys(team);
+console.log(keys); // ["leader", "developer", "designer", "tester"]
+
+keys.forEach(key => {
+    console.log(`${key}: ${team[key]}`);
+});
+Object.values()
+Object.values() returns an array of an object's values, useful for iterating over or analyzing data.
+
+const device = {
+    brand: 'Samsung',
+    model: 'Galaxy S21',
+    year: 2021
+};
+
+const values = Object.values(device);
+console.log(values); // ["Samsung", "Galaxy S21", 2021]
+Object.entries()
+Object.entries() returns a nested array of an object's key-value pairs, allowing for easy iteration and manipulation.
+
+const software = {
+    name: 'Photoshop',
+    version: '2021',
+    license: 'Commercial'
+};
+
+const entries = Object.entries(software);
+entries.forEach(([key, value]) => {
+    console.log(`${key}: ${value}`);
+});
+Object.assign()
+Object.assign() copies values from one object to another, useful for merging objects.
+
+const personalDetails = { firstName: 'Jane', lastName: 'Doe' };
+const jobDetails = { position: 'Manager', company: 'Tech Inc' };
+
+const profile = Object.assign({}, personalDetails, jobDetails);
+console.log(profile); // {firstName: "Jane", lastName: "Doe", position: "Manager", company: "Tech Inc"}
+Object.freeze()
+Object.freeze() prevents modifications to an object's properties and values, ensuring immutability.
+
+const settings = { theme: 'light', notifications: true };
+Object.freeze(settings);
+
+settings.theme = 'dark'; // No effect
+console.log(settings); // {theme: "light", notifications: true}
+Object.seal()
+Object.seal() prevents new properties from being added to an object but allows modification of existing properties.
+
+const account = { username: 'user123', password: 'pass123' };
+Object.seal(account);
+
+account.password = 'newpass'; // Allowed
+account.email = 'user@example.com'; // Not allowed
+console.log(account); // {username: "user123", password: "newpass"}
+Object.getPrototypeOf()
+Object.getPrototypeOf() retrieves the prototype of an object, useful for understanding inheritance and prototype chains.
+
+const gadgets = ['laptop', 'tablet', 'smartphone'];
+console.log(Object.getPrototypeOf(gadgets) === Array.prototype); // true
+Conclusion
+JavaScript's built-in object methods provide essential tools for managing and manipulating objects, allowing you to create, modify, and protect data effectively. Understanding these methods enhances your ability to work with objects and leverage their full potential in your applications.
