@@ -2758,3 +2758,249 @@ const gadgets = ['laptop', 'tablet', 'smartphone'];
 console.log(Object.getPrototypeOf(gadgets) === Array.prototype); // true
 Conclusion
 JavaScript's built-in object methods provide essential tools for managing and manipulating objects, allowing you to create, modify, and protect data effectively. Understanding these methods enhances your ability to work with objects and leverage their full potential in your applications.
+
+Overview of Upcoming Lessons
+In the upcoming three lessons, we're going to cover some tricky concepts in JavaScript: Scope, Hoisting, and Closures.
+
+Scope: We'll start with the concept of scope, which is fundamental to any programming language. Scope determines the accessibility of variables and functions in different parts of your code.
+Hoisting: Next, we'll discuss hoisting, a JavaScript-specific behavior that affects variable and function declarations. While hoisting might not be something you use consciously in everyday coding, understanding it can help you avoid potential pitfalls.
+Closures: Finally, we'll explore closures, a powerful feature in JavaScript that allows functions to retain access to their lexical scope even when executed outside of it. Closures are often considered tricky but are incredibly useful once you understand them.
+
+
+What is Scope and Why Do We Need It?
+Scope allows us to know where we have access to our variables. It shows us the accessibility of variables, functions, and objects in some particular part of the code.
+
+Why Limit Visibility?
+Security: Limiting the visibility of variables provides a level of security to your code.
+Efficiency: It helps improve efficiency, track bugs, and reduce them.
+Naming Conflicts: It solves the problem of naming variables.
+Types of Scope
+Global Scope
+Local Scope
+Block Scope ( only with let and const )
+Variables defined inside a function are in local scope , while variables defined outside of a function are in the global scope . Each function, when invoked, creates a new scope.
+
+There are rules about how scope works, but usually, you can search for the closest { } curly braces around where you define the variable. That “block” of code is its scope .
+
+Global Scope
+When you start writing in a JavaScript document, you're already in the global scope.
+
+const name = 'Adrian';
+Variables written inside the global scope can be accessed and altered in any other scope.
+
+const logName = () => {
+    console.log(name);
+}
+
+logName();
+Advantages of Using Global Variables
+Accessibility: You can access the global variable from all the functions or modules in a program.
+Consistency: Ideally used for storing "constants" as it helps you keep the consistency.
+Data Sharing: Useful when multiple functions are accessing the same data.
+Disadvantages of Using Global Variables
+Memory Usage: Too many variables declared as global remain in memory until program execution is completed, which can cause out-of-memory issues.
+Unpredictable Results: Data can be modified by any function, leading to unpredictable results in multi-tasking environments.
+Refactoring Challenges: If global variables are discontinued due to code refactoring, you will need to change all the modules where they are called.
+Local Scope
+Variables defined inside a function are in the local scope.
+
+// Global Scope
+
+const someFunction = () => {
+    // Local Scope #1
+
+    const anotherFunction = () => {
+        // Local Scope #2
+    }
+}
+Advantages of Using Local Variables
+Data Integrity: The use of local variables offers a guarantee that the values of variables will remain intact while the task is running.
+Naming Flexibility: You can give local variables the same name in different functions because they are only recognized by the function they are declared in.
+Memory Efficiency: Local variables are deleted as soon as any function is over, releasing the memory space they occupy.
+Disadvantages of Using Local Variables
+Limited Scope: They have a very limited scope. If you need to use a variable in a parent scope, declare it there.
+Block Scope
+Block statements like if, for, and while loops don't create a new scope with var.
+
+However, variables defined with const or let have block scope, meaning they are only available inside the block of code where they are created.
+
+if (true) {
+    var name = 'Adrian'; // global scope
+    let likes = 'Coding'; // block scope
+    const skills = 'JavaScript and PHP'; // block scope
+}
+
+console.log(name); // logs 'Adrian'
+console.log(likes); // Uncaught ReferenceError: likes is not defined
+console.log(skills); // Uncaught ReferenceError: skills is not defined
+What is More Useful?
+Both local and global variables are important. However, a large number of global variables can occupy a lot of memory and make changes difficult to track.
+
+It's advisable to avoid declaring unnecessary global variables and always declare variables in the scope where you intend to use them .
+
+Key Differences
+Aspect	Local Variable	Global Variable
+Declaration	Declared inside a function; created when the function starts and lost when it ends.	Declared outside a function; created at execution start and lost when the program ends.
+Data Sharing	Local variables don't provide data sharing.	Global variables do provide data sharing.
+Storage	Stored on the stack.	Stored at a fixed location.
+Parameter Passing	Required for local variables.	Not required for global variables.
+Understanding scope is crucial for writing efficient and error-free JavaScript code. It helps you manage variable accessibility and avoid potential conflicts.
+
+Exploring JavaScript Scopes: Global, Function, and Block Scopes
+In this workshop-style lesson, we delve into the concept of scope in JavaScript, emphasizing the practical understanding through code examples. The lesson walks through the different types of scopes: global, function, and block, highlighting how they interact and restrict access to variables based on their declaration context.
+
+Global Scope: Variables defined in the global scope are accessible throughout the code, both inside and outside functions.
+Function Scope: Variables declared within a function are limited to that function and cannot be accessed outside of it, leading to a reference error if attempted.
+Block Scope: let and const variables have block scope, meaning they can only be accessed within the block they are defined in, like if-statements or loops.
+Nested Functions: Inner functions have access to variables declared in their parent function's scope, but not vice versa. This illustrates the hierarchical access of scopes.
+Summary of Scope Access: Globally scoped variables can be accessed everywhere, function scoped variables are limited to their function (and nested functions), while block scoped variables are confined to their defining block.
+The importance of understanding scope in practical JavaScript programming is emphasized, particularly for effective coding.
+
+What is Hoisting?
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. This means that no matter where functions and variables are declared, they are moved to the top of their scope, whether global or local.
+
+When JavaScript compiles your code, all variable declarations using var are hoisted to the top of their functional (if declared inside a function) or global scope (if declared outside a function), regardless of where the actual declaration is made. This is what we mean by "hoisting."
+
+Variable Hoisting
+In JavaScript, an undeclared variable is assigned the value undefined at execution and is also of type undefined.
+
+console.log(typeof name); // undefined
+A ReferenceError is thrown when trying to access a previously undeclared variable .
+
+console.log(name); // ReferenceError: name is not defined
+Key thing to note regarding hoisting is that only the variable declaration is moved to the top, not the actual value assigned to the variable.
+
+console.log(myString); // undefined
+var myString = 'test';
+This is equivalent to:
+
+var myString;
+console.log(myString); // undefined
+myString = 'test';
+Example 1:
+
+var hoist;
+console.log(hoist); // undefined
+hoist = 'The variable has been hoisted.';
+Example 2:
+
+function hoist() {
+  var message;
+  console.log(message);
+  message = 'Hoisting is cool!';
+}
+hoist(); // undefined
+Only Declarations are Hoisted
+JavaScript only hoists declarations, not initializations. If a variable is declared and initialized after using it, the value will be undefined.
+
+console.log(num); // undefined
+var num;
+num = 6;
+To avoid this pitfall, always declare and initialize the variable before using it:
+
+function hoist() {
+  var message = 'Hoisting is cool!';
+
+  return message;
+}
+
+hoist(); // Hoisting is cool!
+The variable declaration, var message, whose scope is the function hoist(), is hoisted to the top of the function.
+
+This section of the course is the only time you'll see me use older syntax like function declarations and the var keyword.
+Why? It shows that newer versions of JavaScript are moving away from this style. It's good to know that hoisting exists, but you should never rely on it.
+Always declare variables exactly where they should be: at the top of the scope they're used in .
+This ensures your code is predictable and doesn't rely on hoisting.
+let and const are also hoisted, but you cannot access them before the actual declaration is evaluated at runtime. What does this mean? Let's see it in a simple example:
+
+console.log(myVarString); // undefined
+var myVarString = 'var';
+
+console.log(myLetString); // ReferenceError
+let myLetString = 'let';
+
+console.log(myConstString); // ReferenceError
+const myConstString = 'const';
+With let and const, you get exactly what you would expect: a reference error. This is JavaScript's way of encouraging clean code.
+
+You should always declare variables before using them.
+
+Function Hoisting
+Like var variables, function declarations are completely hoisted to the top.
+
+hoisted(); // 'This function has been hoisted.'
+
+function hoisted() {
+  console.log('This function has been hoisted.');
+}
+Again, would you ever need to do this? No.
+Always declare the function before you call it.
+Function Expressions
+Function expressions, the more modern way of writing functions with the const keyword, are not hoisted.
+
+functionExpression(); // ReferenceError
+
+const functionExpression = () => {
+  console.log('Will this work?');
+}
+Hoisting, like closures (which we'll discuss in the next lesson), are complex topics. They might not be useful in everyday coding, but understanding them is important for technical interviews. If you stick to good programming habits, you won't encounter hoisting or closures often. However, knowing about these "tricky concepts" can be beneficial, especially in interview scenarios
+
+Closures
+Closures are a fundamental concept in JavaScript that enable functions to retain access to their lexical scope, even when the function is executed outside of that scope. This is particularly useful when you have a function defined inside another function.
+
+Here's a basic example to illustrate closures:
+
+const outer = () => {
+  const outerVar = 'Hello!';
+
+  const inner = () => {
+    const innerVar = 'Hi!';
+    console.log(innerVar, outerVar);
+  };
+
+  return inner;
+};
+
+const innerFn = outer();
+innerFn();
+How Closures Work
+Normally, when you exit a function, all its variables “disappear” because nothing needs them anymore. But if you declare a function inside another function, the inner function can still be called later and access the variables of the outer function. For this to work, the outer function’s variables need to “stick around.” JavaScript handles this by keeping the variables alive instead of forgetting them, creating what is known as a "closure."
+
+In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+Example of a Closure
+const init = () => {
+  const hobby = 'Learning JavaScript'; // hobby is a local variable created by init
+
+  const displayHobby = () => { // displayHobby() is the inner function, a closure
+    console.log(hobby); // using variable declared in the parent function
+  };
+
+  displayHobby();
+};
+
+init();
+In this example, init() creates a local variable called hobby and a function called displayHobby().
+The displayHobby() function is an inner function that is defined inside init() and is only available within the body of the init() function.
+However, since inner functions have access to the variables of outer functions, displayHobby() can access the variable hobby declared in the parent function, init().
+Returning a Closure
+const init = () => {
+  const hobby = 'Learning JavaScript'; // hobby is a local variable created by init
+
+  const displayHobby = () => { // displayHobby() is the inner function, a closure
+    console.log(hobby); // using variable declared in the parent function
+  };
+
+  return displayHobby;
+};
+
+const myFunc = init();
+myFunc();
+Running this code has the same effect as the previous example, but with a twist: the displayHobby() inner function is returned from the outer function before being executed.
+
+At first glance, it may seem unintuitive that this code still works. In some programming languages, the local variables within a function exist only for the duration of that function's execution. However, in JavaScript, functions form closures. A closure is the combination of a function and the environment within which that function was declared. This environment consists of any local variables that were in-scope at the time the closure was created.
+
+In this case, myFunc is a reference to the instance of the function displayHobby created when init is run.
+The instance of displayHobby maintains a reference to its lexical environment, within which the variable hobby exists.
+For this reason, when myFunc is invoked, the variable hobby remains available for use.
+Closures are a powerful feature in JavaScript, enabling more flexible and modular code. Understanding closures will enhance your ability to write efficient and effective JavaScript programs.
