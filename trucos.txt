@@ -1,0 +1,341 @@
+in this article, you'll find 15 simple yet powerful JavaScript snippets that you can easily use in your projects.
+
+These snippets are very helpful in simplifying common tasks and can therefore help you to become a more efficient developer.
+
+📌 Save them in a safe place so you can refer back to them when you need to!
+
+Get Current Date and Time
+function getCurrentDateTime() {
+  const now = new Date();
+  return now.toLocaleString();
+}
+
+console.log(getCurrentDateTime());
+
+// 28/07/2024, 20:26:54
+This function uses the Date object and its toLocaleString() method to return a string representation of the current date and time in the user's locale format.
+
+For more control over the format, you can use the following snippet:
+
+function getCurrentDateTime() {
+  const now = new Date();
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true,
+  };
+  return now.toLocaleString('en-US', options);
+}
+
+console.log(getCurrentDateTime());
+
+// July 28, 2024 at 08:30:37 PM
+If you need to work with specific parts of the date and time separately, you can use methods like getFullYear(), getMonth(), getDate(), getHours(), getMinutes(), and getSeconds().
+
+2. Find the Maximum Number in an Array
+There are various methods that you can use for this - including a for loop and Array.reduce.
+
+But here is a simple solution using Math.max:
+
+function findMaxNumber(arr) {
+  return Math.max(...arr);
+}
+
+// Example:
+const numbers = [5, 2, 8, 1, 9, 3];
+console.log(findMaxNumber(numbers));
+
+// Output: 9
+3. Shuffle an Array
+Here are three ways that you can shuffle an array:
+
+a. Using the Fisher-Yates (Knuth) shuffle algorithm
+This is generally the most reliable and unbiased method.
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+b. Using sort() with Math.random()
+This is the simplest method, but may not shuffle large arrays in a uniform manner.
+
+function shuffleArray(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+c. Using map() and sort()
+This creates a new array which may be preferable depending on what you're needing for your project.
+
+function shuffleArray(array) {
+  return array
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+4. Generate a Random Number Between 1 and 10
+function getRandomNumber() {
+  return Math.floor(Math.random() * 10) + 1;
+}
+
+// Example:
+console.log(getRandomNumber());
+
+// 6
+How it works:
+
+Math.random() generates a random floating-point number between 0 (inclusive) and 1 (exclusive).
+
+Multiplying by 10 gives us a number between 0 (inclusive) and 10 (exclusive).
+
+Math.floor() rounds down to the nearest integer, giving us a number between 0 and 9.
+
+Adding 1 moves the range to 1-10.
+
+We can also modify the code above to work with any range:
+
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Example:
+console.log(getRandomNumber(1, 10)); // Random number between 1 and 10
+console.log(getRandomNumber(5, 15)); // Random number between 5 and 15
+5. Convert a String to Lower Case
+In JavaScript, you can convert a string to lowercase using the built-in toLowerCase() method.
+
+let str = 'HELLO WORLD';
+console.log(str.toLowerCase());
+
+// "hello world"
+
+let mixedCase = 'ThIs Is MiXeD cAsE';
+console.log(mixedCase.toLowerCase());
+
+// "this is mixed case"
+6. Check if Even or Odd Number
+This function makes use of the modulo operator (%) to check if a number is divisible by 2 with no remainder.
+
+If the remainder is 0, the number is even; otherwise, it's odd.
+
+function isEven(number) {
+  return number % 2 === 0;
+}
+
+// Example:
+console.log(isEven(4)); // true
+console.log(isEven(7)); // false
+We can also do it like this:
+
+function checkEvenOrOdd(number) {
+  if (number % 2 === 0) {
+    return 'Even';
+  } else {
+    return 'Odd';
+  }
+}
+
+// Example:
+console.log(checkEvenOrOdd(4)); // "Even"
+console.log(checkEvenOrOdd(7)); // "Odd"
+The ternary operator can also be used to make it more concise:
+
+function checkEvenOrOdd(number) {
+  return number % 2 === 0 ? 'Even' : 'Odd';
+}
+
+// Example:
+console.log(checkEvenOrOdd(4)); // "Even"
+console.log(checkEvenOrOdd(7)); // "Odd"
+7. Create a Simple 10-Second Countdown Timer
+Copy and paste this in your console to watch this simple timer in action! ⏰
+
+let seconds = 10;
+const countdown = setInterval(() => {
+  console.log(seconds);
+  seconds--;
+  if (seconds < 0) {
+    clearInterval(countdown);
+    console.log('Countdown finished!');
+  }
+}, 1000);
+
+// 10
+// 9
+// 8
+// 7
+// 6
+// 5
+// 4
+// 3
+// 2
+// 1
+// Countdown finished!
+8. Convert an Array of Numbers to an Array of Strings
+There are multiple ways to do this.
+
+We can use map() and toString():
+
+function convertToStringArray(numbers) {
+  return numbers.map((num) => num.toString());
+}
+
+// Example:
+const numbers = [1, 2, 3, 4, 5];
+console.log(convertToStringArray(numbers));
+
+// ['1', '2', '3', '4', '5']
+We can use map() with template literals:
+
+function convertToStringArray(numbers) {
+  return numbers.map((num) => `${num}`);
+}
+
+// Example:
+const numbers = [1, 2, 3, 4, 5];
+console.log(convertToStringArray(numbers));
+
+// ['1', '2', '3', '4', '5']
+We can use map() with the String() constructor:
+
+function convertToStringArray(numbers) {
+  return numbers.map(String);
+}
+
+// Example:
+const numbers = [1, 2, 3, 4, 5];
+console.log(convertToStringArray(numbers));
+
+// ['1', '2', '3', '4', '5']
+9. Remove Duplicates From an Array
+There are several ways to remove duplicates from an array - here are two of the more widely used methods.
+
+Using Set (ES6+):
+
+This method creates a set (which only allows unique values) from the array and then spreads it back into a new array.
+
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+// Example:
+const array = [1, 2, 2, 3, 4, 4, 5];
+console.log(removeDuplicates(array));
+
+// [1, 2, 3, 4, 5]
+Using filter() and indexOf():
+
+function removeDuplicates(arr) {
+  return arr.filter((item, index) => arr.indexOf(item) === index);
+}
+
+// Example:
+const array = [1, 2, 2, 3, 4, 4, 5];
+console.log(removeDuplicates(array));
+
+// [1, 2, 3, 4, 5]
+10. Convert a Sentence Into an Array of Words
+This can easily be done with the split() array method:
+
+function sentenceToArray(sentence) {
+  return sentence.split(' ');
+}
+
+// Example:
+const sentence = 'This is a sample sentence';
+console.log(sentenceToArray(sentence));
+
+// ["This", "is", "a", "sample", "sentence"]
+11. Repeat a String
+For this, we can use the repeat() method or a simple for loop:
+
+function repeatString(str, count) {
+  return str.repeat(count);
+}
+
+// Example:
+console.log(repeatString('Hello ', 3));
+
+// "Hello Hello Hello "
+With a for loop:
+
+function repeatString(str, count) {
+  let result = '';
+  for (let i = 0; i < count; i++) {
+    result += str;
+  }
+  return result;
+}
+
+// Example:
+console.log(repeatString('Hello ', 3));
+
+// "Hello Hello Hello "
+12. Find the Intersection of Two Arrays in JavaScript
+An example of where we would use this is perhaps a social media platform.
+
+Finding common interests between users can help with suggesting friends or content.
+
+const user1Interests = ['music', 'movies', 'sports', 'technology'];
+const user2Interests = ['travel', 'music', 'technology', 'food'];
+
+const commonInterests = user1Interests.filter((interest) => user2Interests.includes(interest));
+console.log(commonInterests);
+
+// ["music", "technology"]
+We could also use this to find shared courses between students to perhaps create study groups:
+
+const student1Courses = ['Math', 'Physics', 'Chemistry', 'Biology'];
+const student2Courses = ['History', 'Math', 'Chemistry', 'English'];
+
+const sharedCourses = student1Courses.filter((course) => student2Courses.includes(course));
+console.log(sharedCourses);
+
+// ["Math", "Chemistry"]
+13. Create Dynamic Strings
+There are many ways to do this (for example, with Array.join and string concatenation), but here is an easy way using template literals:
+
+const name = 'Alice';
+const age = 30;
+const message = `Hello, my name is ${name} and I am ${age} years old.`;
+
+console.log(message);
+
+// "Hello, my name is Alice and I am 30 years old."
+14. Merge Objects
+The spread operator (...) is a concise way to merge objects.
+
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+
+const mergedObj = { ...obj1, ...obj2 };
+
+console.log(mergedObj);
+
+// { a: 1, b: 3, c: 4 }
+We can also use Object.assign():
+
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+
+const mergedObj = Object.assign({}, obj1, obj2);
+
+console.log(mergedObj);
+
+// { a: 1, b: 3, c: 4 }
+15. Redirect to a New URL After a Delay
+To redirect to a new URL after a delay in JavaScript, you can use setTimeout() in combination with window.location.href.
+
+function redirectWithDelay(url, delay) {
+  setTimeout(function () {
+    window.location.href = url;
+  }, delay);
+}
+
+// Example:
+redirectWithDelay('https://www.example.com', 3000);
