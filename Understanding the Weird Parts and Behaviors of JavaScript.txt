@@ -1,0 +1,109 @@
+
+Recommended for you
+
+Similar article
+Infinite Scroll with JavaScript - The Step-By-Step Guide
+
+Simple JavaScript Source Code Snippets for Your Projects
+
+TypeScript vs JavaScript: A Comprehensive Comparison
+
+Building Your JavaScript Portfolio - 17 Best Practices
+
+The Switch Statement in JavaScript: When and How to Use It
+
+Currying in JavaScript: A Comprehensive Guide
+
+Understanding the Weird Parts and Behaviors of JavaScript
+Oh, JavaScript! 😉
+
+Just when you think you've got it figured out, it throws you a curveball that leaves you scratching your head.
+
+From its quirky type coercion to its peculiar equality comparisons, JavaScript's "weird parts" have been the source of both frustration and fascination for developers worldwide.
+
+Let's take a journey through these quirks that aren't just bugs to be squashed, but features that give the language its unique flavor and power.
+
+Zero and Empty String
+Why does 0 == false in JavaScript?
+
+It’s due to implicit type coercion which happens when the loose equality operator is used.
+
+In the example below, false is coerced to 0.
+
+Since 0 is equal to 0, the comparison returns true!
+
+An empty string behaves similarly.
+
+// Loose equality operator: (==)
+
+0 == false // true
+'' == false // true
+Null
+In Javascript, when the comparison operators are used, null is treated as zero.
+
+Thus, these examples are true:
+
+// Comparison operators: >=, =<, >, <
+
+null <= 0 // true
+null >= 0 // true
+
+0 <= 0 // true
+0 >= 0 // true
+NaN
+The NaN global property in JavaScript is a value representing Not-A-Number.
+
+It represents the result of an operation that does not produce a well-defined numerical result.
+
+It's behavior can be confusing as it is not equal to any other value in JavaScript, including itself!
+
+NaN === NaN // false
+Objects
+Even though obj1 and obj2 have the same structure and content in the code below, they are two separate objects stored in different locations in memory.
+
+Primitive values like numbers, strings, and booleans are compared by value, whereas objects are compared by reference.
+
+let obj1 = { name: "Sarah", age: 30 }
+let obj2 = { name: "Sarah", age: 30 }
+
+obj1 == obj2 // false
+obj1 === obj2 // false
+Subtraction of Strings
+In JavaScript, when we add two strings, they get concatenated to form a single string.
+
+But when we try to subtract one string from another, JavaScript attempts to convert those strings to numbers.
+
+If either string cannot be converted to a number, the result is NaN.
+
+'ab' + 'cd' // 'abcd'
+'ab' - 'cd'// NaN
+Logical Operators
+Logical operators in JavaScript can be tricky 😉
+
+The logical OR (||) operator returns the first truthy value it encounters or the last value if none are truthy.
+
+The logical AND (&&) operator returns the first falsy value it encounters or the last value if none are falsy.
+
+true || 'hello' // true
+true && 'hello' // 'hello'
+Arrays and Loose Equality
+Array(3) == ",," // true
+Yes, this code returns true!
+
+Let’s break it down:
+
+Array(3) in JavaScript creates a new array with a length of 3, but without initializing the elements.
+
+This means it will look something like this:
+
+[,,]
+Now, we know that when comparing values of different types using the loose equality operator, JavaScript attempts to convert the operands to a common type before making the comparison.
+
+In this case, the array [,,] is coerced to a string leaving only the commas - ",," - which means that our comparison is indeed true!
+
+Conclusion
+By embracing JavaScript's idiosyncrasies, we can write more robust, efficient, and creative code.
+
+After all, it's these very oddities that have allowed JavaScript to evolve from a simple scripting language into the powerhouse it is today, capable of running everything from complex web applications to server-side programs!
+
+So the next time you encounter a JavaScript quirk, don't just scratch your head – dive in and explore! 🚀

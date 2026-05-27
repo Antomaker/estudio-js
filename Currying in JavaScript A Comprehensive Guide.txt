@@ -1,0 +1,216 @@
+The great mathematician and physicist, John von Neumann, once said, "You don't understand mathematics, you just get used to it." 😉
+
+Programming in general, is much like the logic of mathematics - the more we build with it, the better we understand its nuances.
+
+So, let's dive in to learn more about JavaScript Currying!
+
+What is JavaScript Currying?
+Currying is an advanced technique of working with functions in JavaScript - named after mathematician, Haskell Curry.
+
+Basically, a curried function takes multiple arguments - but only one at a time.
+
+Each step builds on the previous one, creating a chain of operations.
+
+What this means is that each nested function (or step) in a curried function, only takes one argument that returns a new function.
+
+This cycle is repeated until all the arguments have been passed and an output is returned at the end.
+
+Can you show me some code?
+Sure! 😎
+
+As mentioned above, JavaScript currying breaks down a function with multiple arguments into smaller functions that take one argument each.
+
+So essentially, we would transform a function call that looks like this:
+
+functionCall(a, b, c)
+and convert it into this:
+
+functionCall(a)(b)(c)
+Currying Example in JavaScript
+Let's take a look at a better example to understand JavaScript currying.
+
+Without currying:
+
+// Normal function with multiple arguments
+function buildHouse(step1, step2, step3) {
+  return `${step1}, ${step2}, ${step3}`
+}
+
+buildHouse('Lay foundation', 'Erect pillars', 'Build walls')
+
+// Output: Lay foundation, Erect pillars, Build walls
+With currying:
+
+// Applying currying to transform the function
+function buildHouse(step1) {
+  return function(step2) {
+    return function(step3) {
+      return `${step1}, ${step2}, ${step3}`
+    }
+  }
+}
+
+const finishHouse = buildHouse('Lay foundation')('Erect pillars')('Build walls')
+
+// Output: Lay foundation, Erect pillars, Build walls
+You'll notice that the output is the same in both cases!
+
+Why is Currying Used in JavaScript?
+So, why do we need JavaScript currying?
+
+In real-world scenarios (for example, while developing a logging system that needs real-time monitoring data), currying helps break down these logs into independent wrapper functions that take a single argument based on the previous function, and then logs data accordingly.
+
+Essentially, we are writing wrapper functions to make it easier for the system to handle data by way of modularizing the functions.
+
+In simple words:
+
+We use currying to avoid passing the same variables repeatedly.
+We can nest functions in order to create Higher Order Functions (HOFs) that are reusable in nature.
+Let's Compare Curried Functions to Traditional Functions
+Currying allows us to create reusable functions. We can "lock in" some arguments and create specialized functions for different contexts. Traditional functions require you to pass all arguments every time, limiting reusability.
+
+Currying makes it easier to compose functions. You can chain functions together, each adding its own piece of logic. Composing traditional functions can be more cumbersome and less intuitive.
+
+Currying naturally supports partial application, allowing you to "lock in" some arguments and defer the rest. Traditional functions don't support partial application as naturally.
+
+Currying can improve readability by breaking down complex functions into simpler, more understandable parts. Complex functions with many arguments can be harder to read and maintain.
+
+Currying allows for delayed execution, which can be useful in scenarios where you want to set up a function with some arguments and execute it later with the remaining arguments.Traditional functions execute immediately with all provided arguments.
+
+Are Closures and JavaScript Currying the Same?
+Closures and currying are related concepts in JavaScript, but they are not the same thing.
+A closure occurs when a function is able to remember and access its lexical scope even when that function is executing outside its original scope.
+
+Technically, a closure is formed when an inner function has access to variables in its outer (enclosing) lexical scope.
+
+Currying, on the other hand, is a technique of transforming a function that takes multiple arguments into a sequence of functions, each taking a single argument.
+
+The key differences:
+
+Purpose:
+Closures are about scope and data privacy, while currying is about function transformation and partial application.
+
+Arguments:
+Closures can work with any number of arguments, while curried functions typically deal with one argument at a time.
+
+Implementation:
+Closures are a feature of the language, while currying is a programming technique.
+
+Mathematical basis:
+Currying embodies the concept of functions in lambda calculus, where each function takes exactly one argument.
+
+In conclusion, while currying often involves closures in its implementation, they are distinct concepts serving different purposes in programming.
+
+Partially Applied Curry Functions in JavaScript
+Expanding on the similarities/differences above, we can modify the execution of the functions to be partials.
+
+What do we mean by partials? This refers to partial function application.
+
+This is a technique where we create a new function by effectively "locking in" some parameters of an existing functions so that they do not need to be provided every time the function is called.
+
+So, the new function has fewer parameters than the original.
+
+How this works:
+
+You take a function that accepts multiple arguments.
+You create a new function that pre-fills some of these arguments.
+The new function only needs the remaining arguments to be supplied when called.
+// Normal function
+const add = (a, b) => a + b;
+
+// Currying the add function
+const curryAdd = a => b => a + b;
+
+// Logging the normal function
+console.log(add(4, 5)); // 9
+
+// Logging curried function with only one parameter
+console.log(curryAdd(6)); // b => a + b --> does not execute until all separate parameters are passed
+
+// Logging curried function with all parameters
+console.log(curryAdd(6, 7)); // 13
+
+// Partially applied currying
+const addTwenty = curryAdd(20) // already passed in the first parameter
+
+// Logging addTwenty with partials passed -
+console.log(addTwenty); // b => a + b -- where b is still not passed
+console.log(addTwenty(32)); // 52
+Notice how easy it is to now pass custom functions with partials "curried" into it as parameters? Partially applied functions are a common implementation of JavaScript currying.
+
+Let's look at an example of currying with objects:
+
+// Define a curried function to access the properties of an object:
+function property(obj) {
+  return function (key) {
+    return obj[key];
+  }
+}
+
+// Employee object
+const employee = {
+  name: 'John Wick',
+  designation: 'Enforcer',
+  jobs: 77
+}
+
+// Curried function to access employee properties
+const accessEmp = property(employee) // passing in employee object as parameter
+
+// Defining specific variables to access properties
+const empName = accessEmp('name') // pass property name as parameter
+const empDesignation = accessEmp('designation')
+
+// Log curried function returned values
+console.log('Employee Name: ', empName);
+console.log('Employee Designation: ', empDesignation);
+Earlier, we wrote a curried function that accepted a function as a parameter which itself expected a known number of parameters to be passed in.
+
+But what if the input was dynamic?
+
+We can make use of the rest (...) and spread (...) operators to define our own implementation of currying.
+
+Here's the basic outline of what a curried function would look like:
+
+function curry (fn) {
+   function curryFn (..args) {
+    //
+   }
+   return curryFn
+ }
+We use ...args to pass in dynamic/indefinite number of arguments.
+
+Restructuring this, we get:
+
+function curry (fn, ...args) {
+  return (..._arg) => {
+    return fn(...args, ..._arg);
+  }
+}
+Here, we first pass in fn (a function) and ...args(a rest operator) to pass in any number of arguments needed.
+
+Then, we return a function with these indefinite arguments spread as ..._arg, which in turn invokes the original function parameter fn with its arguments now being ...args and ..._arg.
+
+Let's look at a simple example that implements this curry function:
+
+function curry (fn, ...args) {
+  return (..._arg) => {
+    return fn(...args, ..._arg);
+  }
+}
+
+function multiply(p, q, r) {
+  return p * q * r
+}
+
+let product = curry(multiply, 7);
+product(13, 10); // 910 -- 13 * 10 * 7
+product(21, 2); // 294 -- 21 * 2 * 7
+As we can see in the product function above, currying makes it very easy to implement custom functions while passing in both functions and an indefinite number of arguments as parameters for the curried function.
+
+Conclusion
+In conclusion, we can say that currying is like making a sandwich one step at a time. You start with one ingredient and keep adding more until you have a complete sandwich! 🥪
+
+This can offer significant advantages - such as flexibility, manageability, clarity and error reduction.
+
+Let us know if you've implemented currying in an interesting way in your projects! 🚀
