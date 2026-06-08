@@ -1,0 +1,10 @@
+Introduction to React.js for Beginners
+In this course, you will learn React.js, a powerful tool for web and mobile development. The aim is to take you from a beginner to a confident developer by focusing on building real applications while understanding core concepts. You will cover the fundamentals of React.js, including JSX, core syntax, hooks, and new features in React 19, culminating in the creation of a modern movie app that showcases trending films.
+
+Key Takeaways:
+React.js simplifies web development and offers opportunities for mobile development.
+The course focuses on practical learning rather than endless theory or copying code.
+Topics include React.js fundamentals, JSX, core syntax, hooks, and React 19 features.
+You will build a modern movie app with a trending feature.
+There's a free guide and comprehensive course available for deeper learning, covering state management, testing, and advanced patterns.
+The course intends to equip you to build and deploy applications effectively.
